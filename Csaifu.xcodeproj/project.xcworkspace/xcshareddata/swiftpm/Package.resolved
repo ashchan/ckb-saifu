@@ -1,0 +1,43 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "ckb-blake2b",
+        "repositoryURL": "https://github.com/ashchan/ckb-swift-blake2b.git",
+        "state": {
+          "branch": null,
+          "revision": "9d9ce464ca9147d503ab68cf32afab337f8866f9",
+          "version": "0.1.0"
+        }
+      },
+      {
+        "package": "ckb-swift-kit",
+        "repositoryURL": "https://github.com/ashchan/ckb-swift-kit",
+        "state": {
+          "branch": "master",
+          "revision": "66ce768e4574386fd97b974d4cda32190c28a81d",
+          "version": null
+        }
+      },
+      {
+        "package": "CryptoSwift",
+        "repositoryURL": "https://github.com/krzyzanowskim/CryptoSwift.git",
+        "state": {
+          "branch": null,
+          "revision": "39f08ac5269361a50c08ce1e2f41989bfc4b1ec8",
+          "version": "1.3.1"
+        }
+      },
+      {
+        "package": "secp256k1",
+        "repositoryURL": "https://github.com/ashchan/secp256k1.swift.git",
+        "state": {
+          "branch": "master",
+          "revision": "c5d7209f8b7bdb479e8e24bb97b75b16b818e61c",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
