@@ -35,7 +35,7 @@
 		1A31494824761F5200FEB877 /* WalletStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletStore.swift; sourceTree = "<group>"; };
 		1A31494A24762B8B00FEB877 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		1A7853E12476399C0092777B /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
-		1AC32DB3247600B80083BD71 /* Csaifu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Csaifu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1AC32DB3247600B80083BD71 /* CKB Saifu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CKB Saifu.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AC32DB6247600B80083BD71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AC32DB8247600B80083BD71 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1AC32DBA247600B90083BD71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -81,7 +81,7 @@
 		1AC32DB4247600B80083BD71 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1AC32DB3247600B80083BD71 /* Csaifu.app */,
+				1AC32DB3247600B80083BD71 /* CKB Saifu.app */,
 				1AC32DC8247600B90083BD71 /* CsaifuTests.xctest */,
 			);
 			name = Products;
@@ -159,7 +159,7 @@
 				1A7853E624763FCF0092777B /* CKBFoundation */,
 			);
 			productName = Csaifu;
-			productReference = 1AC32DB3247600B80083BD71 /* Csaifu.app */;
+			productReference = 1AC32DB3247600B80083BD71 /* CKB Saifu.app */;
 			productType = "com.apple.product-type.application";
 		};
 		1AC32DC7247600B90083BD71 /* CsaifuTests */ = {
@@ -415,8 +415,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ashchan.Csaifu;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ashchan.ckb-saifu";
+				PRODUCT_NAME = "CKB Saifu";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -438,8 +438,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ashchan.Csaifu;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ashchan.ckb-saifu";
+				PRODUCT_NAME = "CKB Saifu";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -459,7 +459,7 @@
 					"@loader_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ashchan.CsaifuTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ashchan.ckb-saifuTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Csaifu.app/Contents/MacOS/Csaifu";
@@ -481,7 +481,7 @@
 					"@loader_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ashchan.CsaifuTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ashchan.ckb-saifuTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Csaifu.app/Contents/MacOS/Csaifu";
