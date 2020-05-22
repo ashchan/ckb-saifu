@@ -11,19 +11,23 @@ import CKBFoundation
 import CKBKit
 
 struct ExtendedPublicKey: Decodable {
-    let xpubkey: String
+    let raw: String
 
     var publicKey: Data {
-        Data(hex: String(xpubkey.prefix(66)))
+        Data(hex: String(raw.prefix(66)))
     }
 
     var chainCode: Data {
-        Data(hex: String(xpubkey.suffix(64)))
+        Data(hex: String(raw.suffix(64)))
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case raw = "xpubkey"
     }
 }
 
 struct Wallet {
-    private let xpubkey: ExtendedPublicKey
+    let xpubkey: ExtendedPublicKey
     var address: String {
         let publicKey = Keychain(
             publicKey: xpubkey.publicKey,

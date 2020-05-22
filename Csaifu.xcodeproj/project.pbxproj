@@ -12,6 +12,7 @@
 		1A7853E22476399C0092777B /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7853E12476399C0092777B /* Wallet.swift */; };
 		1A7853E524763FCF0092777B /* CKBKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1A7853E424763FCF0092777B /* CKBKit */; };
 		1A7853E724763FCF0092777B /* CKBFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 1A7853E624763FCF0092777B /* CKBFoundation */; };
+		1AB6DA6F2477F720003B713F /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 1AB6DA6E2477F720003B713F /* KeychainAccess */; };
 		1AC32DB7247600B80083BD71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC32DB6247600B80083BD71 /* AppDelegate.swift */; };
 		1AC32DB9247600B80083BD71 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC32DB8247600B80083BD71 /* ContentView.swift */; };
 		1AC32DBB247600B90083BD71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AC32DBA247600B90083BD71 /* Assets.xcassets */; };
@@ -56,6 +57,7 @@
 			files = (
 				1A7853E724763FCF0092777B /* CKBFoundation in Frameworks */,
 				1A7853E524763FCF0092777B /* CKBKit in Frameworks */,
+				1AB6DA6F2477F720003B713F /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +159,7 @@
 			packageProductDependencies = (
 				1A7853E424763FCF0092777B /* CKBKit */,
 				1A7853E624763FCF0092777B /* CKBFoundation */,
+				1AB6DA6E2477F720003B713F /* KeychainAccess */,
 			);
 			productName = Csaifu;
 			productReference = 1AC32DB3247600B80083BD71 /* CKB Saifu.app */;
@@ -210,6 +213,7 @@
 			mainGroup = 1AC32DAA247600B80083BD71;
 			packageReferences = (
 				1A7853E324763FCF0092777B /* XCRemoteSwiftPackageReference "ckb-swift-kit" */,
+				1AB6DA6D2477F720003B713F /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = 1AC32DB4247600B80083BD71 /* Products */;
 			projectDirPath = "";
@@ -529,6 +533,14 @@
 				kind = branch;
 			};
 		};
+		1AB6DA6D2477F720003B713F /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -541,6 +553,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1A7853E324763FCF0092777B /* XCRemoteSwiftPackageReference "ckb-swift-kit" */;
 			productName = CKBFoundation;
+		};
+		1AB6DA6E2477F720003B713F /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1AB6DA6D2477F720003B713F /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

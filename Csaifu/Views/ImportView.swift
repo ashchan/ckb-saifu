@@ -79,14 +79,7 @@ struct ImportView: View, DropDelegate {
     }
 
     private func selectFile() {
-        let panel = NSOpenPanel()
-        panel.message = "Select an extended public key file."
-        panel.allowedFileTypes = [kUTTypeJSON as String]
-        panel.beginSheetModal(for: window!) { (result) in
-            if result == .OK, let path = panel.url {
-                self.loadFile(path: path)
-            }
-        }
+        (NSApplication.shared.delegate as! AppDelegate).openDocument(nil)
     }
 
     private func loadFile(path: URL) {
