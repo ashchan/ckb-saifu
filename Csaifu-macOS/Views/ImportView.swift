@@ -10,7 +10,6 @@ import SwiftUI
 
 struct ImportView: View, DropDelegate {
     @EnvironmentObject private var walletStore: WalletStore
-    @Environment(\.window) private var window
     @State private var draggingOver = false
 
     var body: some View {

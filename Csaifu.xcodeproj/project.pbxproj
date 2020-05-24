@@ -20,6 +20,23 @@
 		1AC32DC1247600B90083BD71 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AC32DBF247600B90083BD71 /* Main.storyboard */; };
 		1AC32DCD247600B90083BD71 /* CsaifuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC32DCC247600B90083BD71 /* CsaifuTests.swift */; };
 		1AC32DDA247601010083BD71 /* ImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC32DD9247601010083BD71 /* ImportView.swift */; };
+		1AE796DB247AB993001A581E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE796DA247AB993001A581E /* AppDelegate.swift */; };
+		1AE796DD247AB993001A581E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE796DC247AB993001A581E /* SceneDelegate.swift */; };
+		1AE796DF247AB993001A581E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE796DE247AB993001A581E /* ContentView.swift */; };
+		1AE796E1247AB994001A581E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AE796E0247AB994001A581E /* Assets.xcassets */; };
+		1AE796E4247AB994001A581E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AE796E3247AB994001A581E /* Preview Assets.xcassets */; };
+		1AE796E7247AB994001A581E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AE796E5247AB994001A581E /* LaunchScreen.storyboard */; };
+		1AE796ED247ABB7E001A581E /* ExplorerApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF97A13247A49B1002C0836 /* ExplorerApi.swift */; };
+		1AE796EE247ABB82001A581E /* ApiEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF97A15247A4BC5002C0836 /* ApiEntity.swift */; };
+		1AE796EF247ABB86001A581E /* UInt64+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF97A1A247A70B6002C0836 /* UInt64+Extension.swift */; };
+		1AE796F0247ABB8A001A581E /* WalletStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A31494824761F5200FEB877 /* WalletStore.swift */; };
+		1AE796F1247ABB8C001A581E /* BalanaceStroe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF97A17247A5983002C0836 /* BalanaceStroe.swift */; };
+		1AE796F2247ABB8F001A581E /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7853E12476399C0092777B /* Wallet.swift */; };
+		1AE796F5247ABBB8001A581E /* CKBFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 1AE796F4247ABBB8001A581E /* CKBFoundation */; };
+		1AE796F7247ABBB8001A581E /* CKBKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1AE796F6247ABBB8001A581E /* CKBKit */; };
+		1AE796F9247ABBB8001A581E /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 1AE796F8247ABBB8001A581E /* KeychainAccess */; };
+		1AE79700247AC076001A581E /* ImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE796FE247AC073001A581E /* ImportView.swift */; };
+		1AE79701247AC079001A581E /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE796FF247AC073001A581E /* DashboardView.swift */; };
 		1AF97A14247A49B2002C0836 /* ExplorerApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF97A13247A49B1002C0836 /* ExplorerApi.swift */; };
 		1AF97A16247A4BC5002C0836 /* ApiEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF97A15247A4BC5002C0836 /* ApiEntity.swift */; };
 		1AF97A18247A5983002C0836 /* BalanaceStroe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF97A17247A5983002C0836 /* BalanaceStroe.swift */; };
@@ -52,6 +69,17 @@
 		1AC32DCC247600B90083BD71 /* CsaifuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CsaifuTests.swift; sourceTree = "<group>"; };
 		1AC32DCE247600B90083BD71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1AC32DD9247601010083BD71 /* ImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportView.swift; sourceTree = "<group>"; };
+		1AE796D8247AB993001A581E /* CKB Saifu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CKB Saifu.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1AE796DA247AB993001A581E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1AE796DC247AB993001A581E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		1AE796DE247AB993001A581E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1AE796E0247AB994001A581E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1AE796E3247AB994001A581E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1AE796E6247AB994001A581E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1AE796E8247AB994001A581E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1AE796EC247ABA08001A581E /* Csaifu-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Csaifu-iOS.entitlements"; sourceTree = "<group>"; };
+		1AE796FE247AC073001A581E /* ImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportView.swift; sourceTree = "<group>"; };
+		1AE796FF247AC073001A581E /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		1AF97A13247A49B1002C0836 /* ExplorerApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplorerApi.swift; sourceTree = "<group>"; };
 		1AF97A15247A4BC5002C0836 /* ApiEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEntity.swift; sourceTree = "<group>"; };
 		1AF97A17247A5983002C0836 /* BalanaceStroe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanaceStroe.swift; sourceTree = "<group>"; };
@@ -76,15 +104,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1AE796D5247AB993001A581E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1AE796F7247ABBB8001A581E /* CKBKit in Frameworks */,
+				1AE796F5247ABBB8001A581E /* CKBFoundation in Frameworks */,
+				1AE796F9247ABBB8001A581E /* KeychainAccess in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		1AC32DAA247600B80083BD71 = {
 			isa = PBXGroup;
 			children = (
-				1AC32DB5247600B80083BD71 /* Csaifu */,
+				1AE796FC247ABF4F001A581E /* Shared */,
+				1AC32DB5247600B80083BD71 /* Csaifu-macOS */,
+				1AE796D9247AB993001A581E /* Csaifu-iOS */,
 				1AC32DCB247600B90083BD71 /* CsaifuTests */,
 				1AC32DB4247600B80083BD71 /* Products */,
+				1AE796F3247ABBB8001A581E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -93,26 +134,23 @@
 			children = (
 				1AC32DB3247600B80083BD71 /* CKB Saifu.app */,
 				1AC32DC8247600B90083BD71 /* CsaifuTests.xctest */,
+				1AE796D8247AB993001A581E /* CKB Saifu.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1AC32DB5247600B80083BD71 /* Csaifu */ = {
+		1AC32DB5247600B80083BD71 /* Csaifu-macOS */ = {
 			isa = PBXGroup;
 			children = (
-				1AF97A12247A499E002C0836 /* Api */,
-				1AC32DD8247600D30083BD71 /* Store */,
-				1AF97A19247A709A002C0836 /* Utils */,
 				1AC32DD7247600CA0083BD71 /* Views */,
 				1AC32DB6247600B80083BD71 /* AppDelegate.swift */,
-				1AC32DB8247600B80083BD71 /* ContentView.swift */,
 				1AC32DBA247600B90083BD71 /* Assets.xcassets */,
 				1AC32DBF247600B90083BD71 /* Main.storyboard */,
 				1AC32DC2247600B90083BD71 /* Info.plist */,
 				1AC32DC3247600B90083BD71 /* Csaifu.entitlements */,
 				1AC32DBC247600B90083BD71 /* Preview Content */,
 			);
-			path = Csaifu;
+			path = "Csaifu-macOS";
 			sourceTree = "<group>";
 		};
 		1AC32DBC247600B90083BD71 /* Preview Content */ = {
@@ -135,6 +173,7 @@
 		1AC32DD7247600CA0083BD71 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1AC32DB8247600B80083BD71 /* ContentView.swift */,
 				1AC32DD9247601010083BD71 /* ImportView.swift */,
 				1A31494A24762B8B00FEB877 /* DashboardView.swift */,
 			);
@@ -149,6 +188,56 @@
 				1A7853E12476399C0092777B /* Wallet.swift */,
 			);
 			path = Store;
+			sourceTree = "<group>";
+		};
+		1AE796D9247AB993001A581E /* Csaifu-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				1AE796FD247AC064001A581E /* Views */,
+				1AE796DA247AB993001A581E /* AppDelegate.swift */,
+				1AE796DC247AB993001A581E /* SceneDelegate.swift */,
+				1AE796E0247AB994001A581E /* Assets.xcassets */,
+				1AE796E5247AB994001A581E /* LaunchScreen.storyboard */,
+				1AE796E8247AB994001A581E /* Info.plist */,
+				1AE796EC247ABA08001A581E /* Csaifu-iOS.entitlements */,
+				1AE796E2247AB994001A581E /* Preview Content */,
+			);
+			path = "Csaifu-iOS";
+			sourceTree = "<group>";
+		};
+		1AE796E2247AB994001A581E /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				1AE796E3247AB994001A581E /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1AE796F3247ABBB8001A581E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1AE796FC247ABF4F001A581E /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				1AF97A12247A499E002C0836 /* Api */,
+				1AC32DD8247600D30083BD71 /* Store */,
+				1AF97A19247A709A002C0836 /* Utils */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		1AE796FD247AC064001A581E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1AE796DE247AB993001A581E /* ContentView.swift */,
+				1AE796FE247AC073001A581E /* ImportView.swift */,
+				1AE796FF247AC073001A581E /* DashboardView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		1AF97A12247A499E002C0836 /* Api */ = {
@@ -211,6 +300,28 @@
 			productReference = 1AC32DC8247600B90083BD71 /* CsaifuTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		1AE796D7247AB993001A581E /* Csaifu-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1AE796EB247AB994001A581E /* Build configuration list for PBXNativeTarget "Csaifu-iOS" */;
+			buildPhases = (
+				1AE796D4247AB993001A581E /* Sources */,
+				1AE796D5247AB993001A581E /* Frameworks */,
+				1AE796D6247AB993001A581E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Csaifu-iOS";
+			packageProductDependencies = (
+				1AE796F4247ABBB8001A581E /* CKBFoundation */,
+				1AE796F6247ABBB8001A581E /* CKBKit */,
+				1AE796F8247ABBB8001A581E /* KeychainAccess */,
+			);
+			productName = "Csaifu-iOS";
+			productReference = 1AE796D8247AB993001A581E /* CKB Saifu.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -227,6 +338,9 @@
 					1AC32DC7247600B90083BD71 = {
 						CreatedOnToolsVersion = 11.5;
 						TestTargetID = 1AC32DB2247600B80083BD71;
+					};
+					1AE796D7247AB993001A581E = {
+						CreatedOnToolsVersion = 11.5;
 					};
 				};
 			};
@@ -249,6 +363,7 @@
 			targets = (
 				1AC32DB2247600B80083BD71 /* Csaifu */,
 				1AC32DC7247600B90083BD71 /* CsaifuTests */,
+				1AE796D7247AB993001A581E /* Csaifu-iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -268,6 +383,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1AE796D6247AB993001A581E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1AE796E7247AB994001A581E /* LaunchScreen.storyboard in Resources */,
+				1AE796E4247AB994001A581E /* Preview Assets.xcassets in Resources */,
+				1AE796E1247AB994001A581E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +424,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1AE796D4247AB993001A581E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1AE796DB247AB993001A581E /* AppDelegate.swift in Sources */,
+				1AE796DD247AB993001A581E /* SceneDelegate.swift in Sources */,
+				1AE796F1247ABB8C001A581E /* BalanaceStroe.swift in Sources */,
+				1AE796DF247AB993001A581E /* ContentView.swift in Sources */,
+				1AE796F0247ABB8A001A581E /* WalletStore.swift in Sources */,
+				1AE79700247AC076001A581E /* ImportView.swift in Sources */,
+				1AE79701247AC079001A581E /* DashboardView.swift in Sources */,
+				1AE796ED247ABB7E001A581E /* ExplorerApi.swift in Sources */,
+				1AE796F2247ABB8F001A581E /* Wallet.swift in Sources */,
+				1AE796EE247ABB82001A581E /* ApiEntity.swift in Sources */,
+				1AE796EF247ABB86001A581E /* UInt64+Extension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -316,6 +459,14 @@
 				1AC32DC0247600B90083BD71 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1AE796E5247AB994001A581E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1AE796E6247AB994001A581E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -438,14 +589,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Csaifu/Csaifu.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Csaifu-macOS/Csaifu.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"Csaifu/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Csaifu-macOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 9A3W22M8YB;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Csaifu/Info.plist;
+				INFOPLIST_FILE = "Csaifu-macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -461,14 +612,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Csaifu/Csaifu.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Csaifu-macOS/Csaifu.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"Csaifu/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Csaifu-macOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 9A3W22M8YB;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Csaifu/Info.plist;
+				INFOPLIST_FILE = "Csaifu-macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -524,6 +675,55 @@
 			};
 			name = Release;
 		};
+		1AE796E9247AB994001A581E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Csaifu-iOS/Csaifu-iOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Csaifu-iOS/Preview Content\"";
+				DEVELOPMENT_TEAM = 9A3W22M8YB;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Csaifu-iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ashchan.ckb-csaifu-ios";
+				PRODUCT_NAME = "CKB Saifu";
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1AE796EA247AB994001A581E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Csaifu-iOS/Csaifu-iOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Csaifu-iOS/Preview Content\"";
+				DEVELOPMENT_TEAM = 9A3W22M8YB;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Csaifu-iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ashchan.ckb-csaifu-ios";
+				PRODUCT_NAME = "CKB Saifu";
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -550,6 +750,15 @@
 			buildConfigurations = (
 				1AC32DD5247600B90083BD71 /* Debug */,
 				1AC32DD6247600B90083BD71 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1AE796EB247AB994001A581E /* Build configuration list for PBXNativeTarget "Csaifu-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1AE796E9247AB994001A581E /* Debug */,
+				1AE796EA247AB994001A581E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -587,6 +796,21 @@
 			productName = CKBFoundation;
 		};
 		1AB6DA6E2477F720003B713F /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1AB6DA6D2477F720003B713F /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+		1AE796F4247ABBB8001A581E /* CKBFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A7853E324763FCF0092777B /* XCRemoteSwiftPackageReference "ckb-swift-kit" */;
+			productName = CKBFoundation;
+		};
+		1AE796F6247ABBB8001A581E /* CKBKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A7853E324763FCF0092777B /* XCRemoteSwiftPackageReference "ckb-swift-kit" */;
+			productName = CKBKit;
+		};
+		1AE796F8247ABBB8001A581E /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1AB6DA6D2477F720003B713F /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
