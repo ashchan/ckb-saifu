@@ -12,8 +12,8 @@ import CKBKit
 
 final class BalanceStore: ObservableObject {
     private let wallet: Wallet
-    var recevingAddresses = [String]()
-    var changeAddresses = [String]()
+    private(set) var recevingAddresses = [String]()
+    private(set) var changeAddresses = [String]()
     var derivedAddresses: [String] { recevingAddresses + changeAddresses }
 
     @Published var balance: UInt64 = 0
@@ -22,19 +22,8 @@ final class BalanceStore: ObservableObject {
     init(wallet: Wallet) {
         self.wallet = wallet
 
-        let extendedKey = Keychain(publicKey: wallet.xpubkey.publicKey, chainCode: wallet.xpubkey.chainCode)
-        for index in 0..<20 {
-            let publicKey = extendedKey.derivedKeychain(with: "0/\(index)")!.publicKey
-            let address = AddressGenerator.address(for: publicKey, network: .mainnet)
-            recevingAddresses.append(address)
-            addresses[address] = Address(address: address)
-        }
-        for index in 0..<20 {
-            let publicKey = extendedKey.derivedKeychain(with: "1/\(index)")!.publicKey
-            let address = AddressGenerator.address(for: publicKey, network: .mainnet)
-            changeAddresses.append(address)
-            addresses[address] = Address(address: address)
-        }
+        deriveAddresses(true)
+        deriveAddresses(false)
     }
 
     private func calcTotal() {
@@ -60,5 +49,48 @@ final class BalanceStore: ObservableObject {
                     self?.update(address: result)
                 })
         }
+    }
+}
+
+// MARK: - Derivate addresses
+private extension BalanceStore {
+    var batchSize: Int { 20 }
+
+    var extendedKey: Keychain {
+         Keychain(publicKey: wallet.xpubkey.publicKey, chainCode: wallet.xpubkey.chainCode)
+    }
+
+    func deriveAddress(path: String) -> String {
+        let publicKey = extendedKey.derivedKeychain(with: path)!.publicKey
+        return AddressGenerator.address(for: publicKey, network: .mainnet)
+    }
+
+    func deriveAddresses(_ receiving: Bool = true) {
+        let start = receiving ? recevingAddresses.count : changeAddresses.count
+        for index in start ..< start + batchSize {
+            let address: String
+            if receiving {
+                address = deriveAddress(path: "0/\(index)")
+                recevingAddresses.append(address)
+            } else {
+                address = deriveAddress(path: "1/\(index)")
+                changeAddresses.append(address)
+            }
+            addresses[address] = Address(address: address)
+        }
+
+        let lastAddress = receiving ? recevingAddresses.last! : changeAddresses.last!
+        _ = ExplorerApi
+            .fetch(endpoint: .addresses(address: lastAddress))
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { (error) in
+                print(error)
+            }, receiveValue: { [weak self] (result: Address) in
+                self?.update(address: result)
+
+                if result.transactionsCount > 0 {
+                    self?.deriveAddresses(receiving)
+                }
+            })
     }
 }
