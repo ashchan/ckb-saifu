@@ -27,16 +27,25 @@ final class BalanceStore: ObservableObject {
             let publicKey = extendedKey.derivedKeychain(with: "0/\(index)")!.publicKey
             let address = AddressGenerator.address(for: publicKey, network: .mainnet)
             recevingAddresses.append(address)
+            addresses[address] = Address(address: address)
         }
         for index in 0..<20 {
             let publicKey = extendedKey.derivedKeychain(with: "1/\(index)")!.publicKey
             let address = AddressGenerator.address(for: publicKey, network: .mainnet)
             changeAddresses.append(address)
+            addresses[address] = Address(address: address)
         }
     }
 
     private func calcTotal() {
         balance = addresses.values.map { $0.balance }.reduce(0, +)
+    }
+
+    private func update(address: Address) {
+        if address.transactionsCount > 0 && addresses[address.address]?.balance != address.balance {
+            addresses[address.address] = address
+            calcTotal()
+        }
     }
 
     func loadBalance() {
@@ -48,8 +57,7 @@ final class BalanceStore: ObservableObject {
                 .sink(receiveCompletion: { (error) in
                     print(error)
                 }, receiveValue: { [weak self] (result: Address) in
-                    self?.addresses[result.address] = result
-                    self?.calcTotal()
+                    self?.update(address: result)
                 })
         }
     }
