@@ -17,6 +17,7 @@ final class BalanceStore: ObservableObject {
     var derivedAddresses: [String] { recevingAddresses + changeAddresses }
 
     @Published var balance: UInt64 = 0
+    @Published var transactionsCount: Int = 0
     @Published var addresses = [String: Address]()
 
     init(wallet: Wallet) {
@@ -28,13 +29,16 @@ final class BalanceStore: ObservableObject {
 
     private func calcTotal() {
         balance = addresses.values.map { $0.balance }.reduce(0, +)
+        transactionsCount = addresses.values.map { $0.transactionsCount }.reduce(0, +)
     }
 
     private func update(address: Address) {
-        if address.transactionsCount > 0 && addresses[address.address]?.balance != address.balance {
-            addresses[address.address] = address
-            calcTotal()
+        if address.transactionsCount == 0 && address.balance == 0 {
+            return
         }
+
+        addresses[address.address] = address
+        calcTotal()
     }
 
     func loadBalance() {
@@ -43,8 +47,13 @@ final class BalanceStore: ObservableObject {
             _ = ExplorerApi
                 .fetch(endpoint: .addresses(address: address))
                 .receive(on: DispatchQueue.main)
-                .sink(receiveCompletion: { (error) in
-                    print(error)
+                .sink(receiveCompletion: { completion in
+                    switch completion {
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    case .finished:
+                        break
+                    }
                 }, receiveValue: { [weak self] (result: Address) in
                     self?.update(address: result)
                 })
@@ -83,8 +92,13 @@ private extension BalanceStore {
         _ = ExplorerApi
             .fetch(endpoint: .addresses(address: lastAddress))
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { (error) in
-                print(error)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .failure(let error):
+                    print(error.localizedDescription)
+                case .finished:
+                    break
+                }
             }, receiveValue: { [weak self] (result: Address) in
                 self?.update(address: result)
 

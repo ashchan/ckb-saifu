@@ -21,7 +21,7 @@ struct DashboardView: View {
     var balance: UInt64 { balanceStore.balance }
 
     var body: some View {
-        List {
+        VStack {
             HStack(alignment: .bottom, spacing: 10) {
                 Text("Balance:")
                     .font(Font.system(.title))
@@ -30,8 +30,11 @@ struct DashboardView: View {
                     .fontWeight(.bold)
             }
 
-            ForEach(addresses, id: \.address) { address in
-                AddressRow(address: address)
+            HStack(alignment: .bottom, spacing: 10) {
+                Text("Txs:")
+                    .font(Font.system(.subheadline))
+                Text("\(balanceStore.transactionsCount)")
+                    .font(Font.system(.subheadline))
             }
         }
         .onAppear {
