@@ -10,58 +10,86 @@ import SwiftUI
 
 struct ImportView: View {
     @EnvironmentObject private var walletStore: WalletStore
-    @State private var draggingOver = false
+    @State private var pickerPresented = false
 
     var body: some View {
         VStack(spacing: 20) {
             VStack {
                 Text("🔑")
                     .font(Font.system(size: 80))
-                Text("Drag and drop extended public key file here")
+                Text("Import extended public key")
             }
-            .padding(40)
-            .overlay(
-                RoundedRectangle(cornerRadius: 8)
-                    .strokeBorder(
-                        style: StrokeStyle(
-                            lineWidth: 4,
-                            dash: [8]
-                        )
-                    )
-                    .foregroundColor(draggingOver ? .accentColor : .gray)
-            )
 
             HStack {
-                Text("or")
                 Button(action: {
                     self.selectFile()
                 }) {
-                    Text("Select a file")
+                    Text("Select file")
                 }
             }
 
-            Text("From Neuron, choose 'Wallet > Export Extended Public Key' to get your file.")
-                .padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0))
-                .foregroundColor(.gray)
+            Text("From Neuron, choose 'Wallet > Export Extended Public Key' to get your file.\nThen save that file to one of your iCloud folders.")
+                .font(.footnote)
+                .foregroundColor(.secondary)
+        }
+        .padding(10)
+        .sheet(isPresented: $pickerPresented, onDismiss: {
+            self.pickerPresented = false
+        }) {
+            FilePicker(callback: self.loadFile(_:))
         }
     }
 
     private func selectFile() {
+        pickerPresented.toggle()
     }
 
-    private func loadFile(path: URL) {
+    private func loadFile(_ path: URL) {
         walletStore.import(path: path)
+    }
+}
+
+struct FilePicker: UIViewControllerRepresentable {
+    var callback: (URL) -> ()
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    func updateUIViewController(_ uiViewController: UIDocumentPickerViewController, context: UIViewControllerRepresentableContext<FilePicker>) {
+        // Update the controller
+    }
+
+    func makeUIViewController(context: Context) -> UIDocumentPickerViewController {
+        let controller = UIDocumentPickerViewController(documentTypes: ["public.json"], in: .open)
+        controller.delegate = context.coordinator
+        return controller
+    }
+
+    class Coordinator: NSObject, UIDocumentPickerDelegate {
+        var parent: FilePicker
+
+        init(_ pickerController: FilePicker) {
+            self.parent = pickerController
+        }
+
+        func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+            parent.callback(urls[0])
+        }
+
+        func documentPickerWasCancelled() {
+        }
     }
 }
 
 struct ImportView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-           ImportView()
-              .environment(\.colorScheme, .light)
+            ImportView()
+                .colorScheme(.light)
 
-           ImportView()
-              .environment(\.colorScheme, .dark)
+            ImportView()
+                .colorScheme(.dark)
         }
     }
 }

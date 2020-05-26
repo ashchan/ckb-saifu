@@ -28,7 +28,7 @@ struct ImportView: View, DropDelegate {
                             dash: [8]
                         )
                     )
-                    .foregroundColor(draggingOver ? .accentColor : .gray)
+                    .foregroundColor(draggingOver ? .accentColor : .secondary)
             )
             .onDrop(of: [kUTTypeFileURL as String], delegate: self)
 
@@ -42,8 +42,9 @@ struct ImportView: View, DropDelegate {
             }
 
             Text("From Neuron, choose 'Wallet > Export Extended Public Key' to get your file.")
+                .font(.footnote)
                 .padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0))
-                .foregroundColor(.gray)
+                .foregroundColor(.secondary)
         }
     }
 
@@ -89,11 +90,11 @@ struct ImportView: View, DropDelegate {
 struct ImportView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-           ImportView()
-              .environment(\.colorScheme, .light)
+            ImportView()
+                .colorScheme(.light)
 
-           ImportView()
-              .environment(\.colorScheme, .dark)
+            ImportView()
+                .colorScheme(.dark)
         }
         .frame(minWidth: 800, minHeight: 600)
     }

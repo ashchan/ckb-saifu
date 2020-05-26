@@ -16,6 +16,7 @@ struct ContentView: View {
         if store.hasWallet {
             DashboardView()
                 .environmentObject(BalanceStore(wallet: store.wallet!))
+                .environmentObject(TransactionStore())
         } else {
             ImportView()
         }

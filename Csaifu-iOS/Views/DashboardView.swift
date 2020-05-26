@@ -11,6 +11,7 @@ import SwiftUI
 struct DashboardView: View {
     @EnvironmentObject private var walletStore: WalletStore
     @EnvironmentObject private var balanceStore: BalanceStore
+    @EnvironmentObject private var transactionStore: TransactionStore
 
     var addresses: [Address] {
         balanceStore.derivedAddresses.compactMap { address in
@@ -21,18 +22,47 @@ struct DashboardView: View {
     var balance: UInt64 { balanceStore.balance }
 
     var body: some View {
-        List {
-            HStack(alignment: .bottom, spacing: 10) {
-                Text("Balance:")
-                    .font(Font.system(.title))
-                Text("\(balance.ckbAmount)")
-                    .font(Font.system(.title, design: .monospaced))
-                    .fontWeight(.bold)
-            }
+        NavigationView {
+            List {
+                HStack(alignment: .bottom, spacing: 8) {
+                    Text("Balance:")
+                        .font(Font.system(.subheadline))
+                    Text("\(balance.ckbAmount)")
+                        .font(Font.system(.subheadline, design: .monospaced))
+                        .fontWeight(.bold)
+                    Spacer()
+                    Text("Txs:")
+                        .font(Font.system(.subheadline))
+                    Text("\(balanceStore.transactionsCount)")
+                        .font(Font.system(.subheadline))
+                }
 
-            ForEach(addresses, id: \.address) { address in
-                AddressRow(address: address)
-            }
+                if balanceStore.transactionsCount > 0 && transactionStore.transactions.isEmpty {
+                    HStack(alignment: .center, spacing: 10) {
+                        Spacer()
+                        Button(action: {
+                            self.loadTransactions()
+                        }) {
+                            HStack {
+                                Image(systemName: "arrow.down.circle")
+                                    .font(.body)
+                                Text("Load txs")
+                                    .fontWeight(.semibold)
+                                    .font(.body)
+                            }
+                            .padding(5)
+                            .foregroundColor(.white)
+                            .background(Color.red)
+                            .cornerRadius(15)
+                        }
+                        Spacer()
+                    }
+                }
+
+                ForEach(transactionStore.transactions.sorted(by: { $1.block < $0.block }), id: \.hash) { tx in
+                    TransactionRow(transaction: tx)
+                }
+            }.navigationBarTitle("Transactions")
         }
         .onAppear {
             self.balanceStore.loadBalance()
@@ -40,21 +70,34 @@ struct DashboardView: View {
     }
 }
 
-struct AddressRow: View {
-    let address: Address
+private extension DashboardView {
+    func loadTransactions() {
+        transactionStore.addresses = Array(balanceStore.addresses.values)
+        transactionStore.load()
+    }
+}
+
+struct TransactionRow: View {
+    let transaction: Transaction
+    static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter
+    }()
 
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text(address.address)
-                    .font(Font.system(.body, design: .monospaced))
-            }
-            HStack(spacing: 10) {
-                Text("\(address.balance.ckbAmount)")
-                    .font(Font.system(.body, design: .monospaced))
-                    .fontWeight(.bold)
+                Text(transaction.hash)
+                    .truncationMode(.middle)
+                    .lineLimit(1)
+                    .font(Font.system(.footnote, design: .monospaced))
 
-                Text("txs: \(address.transactionsCount)")
+            }
+
+            HStack(spacing: 10) {
+                Text(Self.dateFormatter.string(from: transaction.date))
+                Text("#\(transaction.block)")
             }
         }
     }
@@ -65,5 +108,6 @@ struct DashboardView_Previews: PreviewProvider {
         DashboardView()
             .environmentObject(WalletStore.example)
             .environmentObject(BalanceStore(wallet: WalletStore.example.wallet!))
+            .environmentObject(TransactionStore())
     }
 }
