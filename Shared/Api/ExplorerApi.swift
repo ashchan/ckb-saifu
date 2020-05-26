@@ -34,7 +34,7 @@ struct ExplorerApi {
             .map { d in
                 // For debug http response
                 // print(String(data: d, encoding: .utf8))
-                d
+                return d
             }
             .replaceError(with: Data())
             .decode(type: Result<T>.self, decoder: decoder)
@@ -46,10 +46,15 @@ struct ExplorerApi {
             .eraseToAnyPublisher()
     }
 
-    static func fetchPaged<T: Codable>(endpoint: Endpoint) -> AnyPublisher<[T], ApiError> {
+    static func fetchCollection<T: Codable>(endpoint: Endpoint, page: Int = 1, perPage: Int = 50) -> AnyPublisher<[T], ApiError> {
         URLSession.shared
-            .dataTaskPublisher(for: buildRequest(endpoint: endpoint))
+            .dataTaskPublisher(for: buildRequest(endpoint: endpoint, params: ["page": "\(page)", "page_size": "\(perPage)"]))
             .map(\.data)
+            .map { d in
+                // For debug http response
+                // print(String(data: d, encoding: .utf8))
+                return d
+            }
             .replaceError(with: Data())
             .decode(type: PaginatedResult<T>.self, decoder: decoder)
             .mapError({ (error) -> ApiError in

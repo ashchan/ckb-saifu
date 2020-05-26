@@ -16,6 +16,7 @@ struct ContentView: View {
         if store.hasWallet {
             DashboardView()
                 .environmentObject(BalanceStore(wallet: store.wallet!))
+                .environmentObject(TransactionStore())
                 .frame(minWidth: 800, maxWidth: .infinity, minHeight: 600, maxHeight: .infinity)
         } else {
             ImportView()

@@ -40,7 +40,6 @@ struct PaginatedResult<T>: Codable where T: Codable {
 
 struct Address: Codable {
     let id: String
-    let type: String
     let attributes: Attributes
 
     var address: String { attributes.addressHash }
@@ -49,7 +48,6 @@ struct Address: Codable {
 
     init(address: String, balance: String = "0") {
         id = ""
-        type = "address"
         attributes = Attributes(
             addressHash: address,
             balance: balance,
@@ -61,5 +59,20 @@ struct Address: Codable {
         let addressHash: String
         let balance: String
         let transactionsCount: String
+    }
+}
+
+struct Transaction: Codable {
+    let id: String
+    let attributes: Attributes
+
+    var hash: String { attributes.transactionHash }
+    var block: UInt64 { UInt64(attributes.blockNumber) ?? 0 }
+    var date: Date { Date(timeIntervalSince1970: (TimeInterval(attributes.blockTimestamp) ?? 0) / 1000) }
+
+    struct Attributes: Codable {
+        let transactionHash: String
+        let blockNumber: String
+        let blockTimestamp: String
     }
 }

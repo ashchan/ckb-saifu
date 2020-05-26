@@ -44,12 +44,18 @@ struct AddressRow: View {
     let address: Address
 
     var body: some View {
-        HStack(spacing: 10) {
-            Text(address.address)
-                .font(Font.system(.body, design: .monospaced))
-            Text("\(address.balance.ckbAmount)")
-                .font(Font.system(.body, design: .monospaced))
-                .fontWeight(.bold)
+        VStack(alignment: .leading) {
+            HStack {
+                Text(address.address)
+                    .font(Font.system(.body, design: .monospaced))
+            }
+            HStack(spacing: 10) {
+                Text("\(address.balance.ckbAmount)")
+                    .font(Font.system(.body, design: .monospaced))
+                    .fontWeight(.bold)
+
+                Text("txs: \(address.transactionsCount)")
+            }
         }
     }
 }

@@ -12,6 +12,8 @@
 		1A7853E22476399C0092777B /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7853E12476399C0092777B /* Wallet.swift */; };
 		1A7853E524763FCF0092777B /* CKBKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1A7853E424763FCF0092777B /* CKBKit */; };
 		1A7853E724763FCF0092777B /* CKBFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 1A7853E624763FCF0092777B /* CKBFoundation */; };
+		1AA9C1C5247CB63400EAD599 /* TransactionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA9C1C4247CB63400EAD599 /* TransactionStore.swift */; };
+		1AA9C1C6247CB63400EAD599 /* TransactionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA9C1C4247CB63400EAD599 /* TransactionStore.swift */; };
 		1AB6DA6F2477F720003B713F /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 1AB6DA6E2477F720003B713F /* KeychainAccess */; };
 		1AC32DB7247600B80083BD71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC32DB6247600B80083BD71 /* AppDelegate.swift */; };
 		1AC32DB9247600B80083BD71 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC32DB8247600B80083BD71 /* ContentView.swift */; };
@@ -57,6 +59,7 @@
 		1A31494824761F5200FEB877 /* WalletStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletStore.swift; sourceTree = "<group>"; };
 		1A31494A24762B8B00FEB877 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		1A7853E12476399C0092777B /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
+		1AA9C1C4247CB63400EAD599 /* TransactionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStore.swift; sourceTree = "<group>"; };
 		1AC32DB3247600B80083BD71 /* CKB Saifu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CKB Saifu.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AC32DB6247600B80083BD71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AC32DB8247600B80083BD71 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -183,9 +186,10 @@
 		1AC32DD8247600D30083BD71 /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				1A7853E12476399C0092777B /* Wallet.swift */,
 				1A31494824761F5200FEB877 /* WalletStore.swift */,
 				1AF97A17247A5983002C0836 /* BalanaceStroe.swift */,
-				1A7853E12476399C0092777B /* Wallet.swift */,
+				1AA9C1C4247CB63400EAD599 /* TransactionStore.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -403,6 +407,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AA9C1C5247CB63400EAD599 /* TransactionStore.swift in Sources */,
 				1AF97A14247A49B2002C0836 /* ExplorerApi.swift in Sources */,
 				1AF97A16247A4BC5002C0836 /* ApiEntity.swift in Sources */,
 				1A7853E22476399C0092777B /* Wallet.swift in Sources */,
@@ -428,6 +433,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AA9C1C6247CB63400EAD599 /* TransactionStore.swift in Sources */,
 				1AE796DB247AB993001A581E /* AppDelegate.swift in Sources */,
 				1AE796DD247AB993001A581E /* SceneDelegate.swift in Sources */,
 				1AE796F1247ABB8C001A581E /* BalanaceStroe.swift in Sources */,

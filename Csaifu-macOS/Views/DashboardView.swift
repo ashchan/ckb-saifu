@@ -11,17 +11,12 @@ import SwiftUI
 struct DashboardView: View {
     @EnvironmentObject private var walletStore: WalletStore
     @EnvironmentObject private var balanceStore: BalanceStore
-
-    var addresses: [Address] {
-        balanceStore.derivedAddresses.compactMap { address in
-            balanceStore.addresses[address]
-        }
-    }
+    @EnvironmentObject private var transactionStore: TransactionStore
 
     var balance: UInt64 { balanceStore.balance }
 
     var body: some View {
-        VStack {
+        List {
             HStack(alignment: .bottom, spacing: 10) {
                 Text("Balance:")
                     .font(Font.system(.title))
@@ -35,6 +30,18 @@ struct DashboardView: View {
                     .font(Font.system(.subheadline))
                 Text("\(balanceStore.transactionsCount)")
                     .font(Font.system(.subheadline))
+
+                if balanceStore.transactionsCount > 0 {
+                    Button(action: {
+                        self.loadTransactions()
+                    }) {
+                        Text("Load transactions")
+                    }
+                }
+            }
+
+            ForEach(transactionStore.transactions.sorted(by: { $1.block < $0.block }), id: \.hash) { tx in
+                TransactionRow(transaction: tx)
             }
         }
         .onAppear {
@@ -43,16 +50,33 @@ struct DashboardView: View {
     }
 }
 
-struct AddressRow: View {
-    let address: Address
+private extension DashboardView {
+    func loadTransactions() {
+        transactionStore.addresses = Array(balanceStore.addresses.values)
+        transactionStore.load()
+    }
+}
+
+struct TransactionRow: View {
+    let transaction: Transaction
+    static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        return formatter
+    }()
 
     var body: some View {
-        HStack(spacing: 10) {
-            Text(address.address)
-                .font(Font.system(.body, design: .monospaced))
-            Text("\(address.balance.ckbAmount)")
-                .font(Font.system(.body, design: .monospaced))
-                .fontWeight(.bold)
+        VStack(alignment: .leading) {
+            HStack {
+                Text(transaction.hash)
+                    .font(Font.system(.body, design: .monospaced))
+
+            }
+
+            HStack(spacing: 10) {
+                Text(Self.dateFormatter.string(from: transaction.date))
+                Text("#\(transaction.block)")
+            }
         }
     }
 }
@@ -62,6 +86,7 @@ struct DashboardView_Previews: PreviewProvider {
         DashboardView()
             .environmentObject(WalletStore.example)
             .environmentObject(BalanceStore(wallet: WalletStore.example.wallet!))
+            .environmentObject(TransactionStore())
             .frame(minWidth: 800, minHeight: 400)
     }
 }
