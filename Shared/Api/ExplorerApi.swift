@@ -14,7 +14,7 @@ enum ApiError: Error {
 }
 
 struct ExplorerApi {
-    private static let server = "https://api.explorer.nervos.org/api/v1/"
+    private static let server = "https://api.explorer.nervos.org/api/v1"
 
     private static let apiQueue = DispatchQueue(
         label: "ckb_saifu_explorer_api",

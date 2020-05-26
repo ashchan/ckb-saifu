@@ -12,7 +12,27 @@ import SwiftUI
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     var window: NSWindow!
+
     private var walletStore = WalletStore()
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "CoreData")
+        container.loadPersistentStores { description, error in
+            if let error = error {
+            }
+        }
+        return container
+    }()
+
+    func saveContext () {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                // Show the error here
+            }
+        }
+    }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         window = NSWindow(
@@ -25,11 +45,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.title = "CKB Saifu"
 
         let contentView = ContentView()
+            .environment(\.managedObjectContext, persistentContainer.viewContext)
             .environmentObject(walletStore)
-            // .environment(\.window, window)
 
         window.contentView = NSHostingView(rootView: contentView)
         window.makeKeyAndOrderFront(nil)
+    }
+
+    func applicationDidResignActive(_ notification: Notification) {
+        saveContext()
     }
 }
 
@@ -58,16 +82,5 @@ extension AppDelegate: NSUserInterfaceValidations {
         default:
             return true
         }
-    }
-}
-
-struct WindowKey: EnvironmentKey {
-    static let defaultValue: NSWindow? = nil
-}
-
-extension EnvironmentValues {
-    var window: NSWindow? {
-        get { self[WindowKey.self] }
-        set { self[WindowKey.self] = newValue }
     }
 }

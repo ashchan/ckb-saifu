@@ -39,6 +39,8 @@
 		1AE796F9247ABBB8001A581E /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 1AE796F8247ABBB8001A581E /* KeychainAccess */; };
 		1AE79700247AC076001A581E /* ImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE796FE247AC073001A581E /* ImportView.swift */; };
 		1AE79701247AC079001A581E /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE796FF247AC073001A581E /* DashboardView.swift */; };
+		1AF1C5B2247DDE9200D4949D /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1C5B0247DDE9200D4949D /* CoreData.xcdatamodeld */; };
+		1AF1C5B3247DDE9200D4949D /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1C5B0247DDE9200D4949D /* CoreData.xcdatamodeld */; };
 		1AF97A14247A49B2002C0836 /* ExplorerApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF97A13247A49B1002C0836 /* ExplorerApi.swift */; };
 		1AF97A16247A4BC5002C0836 /* ApiEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF97A15247A4BC5002C0836 /* ApiEntity.swift */; };
 		1AF97A18247A5983002C0836 /* BalanaceStroe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF97A17247A5983002C0836 /* BalanaceStroe.swift */; };
@@ -83,6 +85,7 @@
 		1AE796EC247ABA08001A581E /* Csaifu-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Csaifu-iOS.entitlements"; sourceTree = "<group>"; };
 		1AE796FE247AC073001A581E /* ImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportView.swift; sourceTree = "<group>"; };
 		1AE796FF247AC073001A581E /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		1AF1C5B1247DDE9200D4949D /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 		1AF97A13247A49B1002C0836 /* ExplorerApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplorerApi.swift; sourceTree = "<group>"; };
 		1AF97A15247A4BC5002C0836 /* ApiEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEntity.swift; sourceTree = "<group>"; };
 		1AF97A17247A5983002C0836 /* BalanaceStroe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanaceStroe.swift; sourceTree = "<group>"; };
@@ -228,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				1AF97A12247A499E002C0836 /* Api */,
+				1AF1C5B7247DE8F400D4949D /* Data */,
 				1AC32DD8247600D30083BD71 /* Store */,
 				1AF97A19247A709A002C0836 /* Utils */,
 			);
@@ -242,6 +246,14 @@
 				1AE796FF247AC073001A581E /* DashboardView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		1AF1C5B7247DE8F400D4949D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				1AF1C5B0247DDE9200D4949D /* CoreData.xcdatamodeld */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		1AF97A12247A499E002C0836 /* Api */ = {
@@ -415,6 +427,7 @@
 				1AC32DDA247601010083BD71 /* ImportView.swift in Sources */,
 				1AF97A18247A5983002C0836 /* BalanaceStroe.swift in Sources */,
 				1A31494B24762B8B00FEB877 /* DashboardView.swift in Sources */,
+				1AF1C5B2247DDE9200D4949D /* CoreData.xcdatamodeld in Sources */,
 				1AF97A1B247A70B6002C0836 /* UInt64+Extension.swift in Sources */,
 				1A31494924761F5200FEB877 /* WalletStore.swift in Sources */,
 				1AC32DB7247600B80083BD71 /* AppDelegate.swift in Sources */,
@@ -436,6 +449,7 @@
 				1AA9C1C6247CB63400EAD599 /* TransactionStore.swift in Sources */,
 				1AE796DB247AB993001A581E /* AppDelegate.swift in Sources */,
 				1AE796DD247AB993001A581E /* SceneDelegate.swift in Sources */,
+				1AF1C5B3247DDE9200D4949D /* CoreData.xcdatamodeld in Sources */,
 				1AE796F1247ABB8C001A581E /* BalanaceStroe.swift in Sources */,
 				1AE796DF247AB993001A581E /* ContentView.swift in Sources */,
 				1AE796F0247ABB8A001A581E /* WalletStore.swift in Sources */,
@@ -822,6 +836,19 @@
 			productName = KeychainAccess;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		1AF1C5B0247DDE9200D4949D /* CoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1AF1C5B1247DDE9200D4949D /* CoreData.xcdatamodel */,
+			);
+			currentVersion = 1AF1C5B1247DDE9200D4949D /* CoreData.xcdatamodel */;
+			path = CoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1AC32DAB247600B80083BD71 /* Project object */;
 }
