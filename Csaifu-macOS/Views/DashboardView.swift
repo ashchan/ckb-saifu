@@ -58,7 +58,7 @@ private extension DashboardView {
 }
 
 struct TransactionRow: View {
-    let transaction: Transaction
+    let transaction: Api.Transaction
     static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .short

@@ -10,10 +10,10 @@ import Foundation
 import Combine
 
 final class TransactionStore: ObservableObject {
-    var addresses = [Address]()
+    var addresses = [Api.Address]()
     private var cancellables = [AnyCancellable]()
 
-    @Published var transactions = [Transaction]()
+    @Published var transactions = [Api.Transaction]()
 
     func load() {
         for address in addresses.filter({ $0.transactionsCount > 0 }) {
@@ -21,7 +21,7 @@ final class TransactionStore: ObservableObject {
         }
     }
 
-    private func load(for address: Address) {
+    private func load(for address: Api.Address) {
         let loader = TransactionLoader(address: address)
         let cancellable = loader.notifier.sink { [weak self] in
             self?.transactions.append(contentsOf: $0)
@@ -32,15 +32,15 @@ final class TransactionStore: ObservableObject {
     }
 
     class TransactionLoader {
-        let address: Address
-        var transactions: [Transaction] = []
+        let address: Api.Address
+        var transactions: [Api.Transaction] = []
         var page = 1
         private let per = 50 // Nervos Explorer accepts up to 100
         private var cancellable: AnyCancellable?
 
-        let notifier = PassthroughSubject<[Transaction], Never>()
+        let notifier = PassthroughSubject<[Api.Transaction], Never>()
 
-        private var loadedTransactions: [Transaction] = [] {
+        private var loadedTransactions: [Api.Transaction] = [] {
             didSet {
                 if page == 1 {
                     transactions = []
@@ -52,7 +52,7 @@ final class TransactionStore: ObservableObject {
             }
         }
 
-        init(address: Address) {
+        init(address: Api.Address) {
             self.address = address
         }
 
@@ -65,7 +65,7 @@ final class TransactionStore: ObservableObject {
         func fetch() {
             let publisher = ExplorerApi
                 .fetchCollection(endpoint: .addressTransactions(address: address.address), page: page, perPage: per)
-                .replaceError(with: [Transaction]())
+                .replaceError(with: [Api.Transaction]())
                 .eraseToAnyPublisher()
             cancellable = publisher
                 .receive(on: DispatchQueue.main)

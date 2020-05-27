@@ -18,7 +18,7 @@ final class BalanceStore: ObservableObject {
 
     @Published var balance: UInt64 = 0
     @Published var transactionsCount: Int = 0
-    @Published var addresses = [String: Address]()
+    @Published var addresses = [String: Api.Address]()
 
     init(wallet: Wallet) {
         self.wallet = wallet
@@ -32,7 +32,7 @@ final class BalanceStore: ObservableObject {
         transactionsCount = addresses.values.map { $0.transactionsCount }.reduce(0, +)
     }
 
-    private func update(address: Address) {
+    private func update(address: Api.Address) {
         if address.transactionsCount == 0 && address.balance == 0 {
             return
         }
@@ -42,7 +42,6 @@ final class BalanceStore: ObservableObject {
     }
 
     func loadBalance() {
-        // TODO: rate limit
         for address in derivedAddresses {
             _ = ExplorerApi
                 .fetch(endpoint: .addresses(address: address))
@@ -54,7 +53,7 @@ final class BalanceStore: ObservableObject {
                     case .finished:
                         break
                     }
-                }, receiveValue: { [weak self] (result: Address) in
+                }, receiveValue: { [weak self] (result: Api.Address) in
                     self?.update(address: result)
                 })
         }
@@ -85,7 +84,7 @@ private extension BalanceStore {
                 address = deriveAddress(path: "1/\(index)")
                 changeAddresses.append(address)
             }
-            addresses[address] = Address(address: address)
+            addresses[address] = Api.Address(address: address)
         }
 
         let lastAddress = receiving ? recevingAddresses.last! : changeAddresses.last!
@@ -99,7 +98,7 @@ private extension BalanceStore {
                 case .finished:
                     break
                 }
-            }, receiveValue: { [weak self] (result: Address) in
+            }, receiveValue: { [weak self] (result: Api.Address) in
                 self?.update(address: result)
 
                 if result.transactionsCount > 0 {

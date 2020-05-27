@@ -25,7 +25,7 @@ final class WalletStore: ObservableObject {
 
     private func persist(wallet: Wallet) {
         let keychain = Keychain(service: Self.keychainService)
-        keychain[Self.keychainKey] = wallet.xpubkey.raw;
+        keychain[Self.keychainKey] = wallet.xpubkey.raw
     }
 }
 
@@ -44,7 +44,7 @@ extension WalletStore {
     }
 
     func delete() {
-        wallet = nil;
+        wallet = nil
         let keychain = Keychain(service: Self.keychainService)
         keychain[Self.keychainKey] = nil
     }

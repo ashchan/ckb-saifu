@@ -38,41 +38,44 @@ struct PaginatedResult<T>: Codable where T: Codable {
     }
 }
 
-struct Address: Codable {
-    let id: String
-    let attributes: Attributes
+struct Api {
+    struct Address: Codable {
+        let id: String
+        let attributes: Attributes
 
-    var address: String { attributes.addressHash }
-    var balance: UInt64 { UInt64(attributes.balance) ?? 0 }
-    var transactionsCount: Int { Int(attributes.transactionsCount) ?? 0 }
+        var address: String { attributes.addressHash }
+        var balance: UInt64 { UInt64(attributes.balance) ?? 0 }
+        var transactionsCount: Int { Int(attributes.transactionsCount) ?? 0 }
 
-    init(address: String, balance: String = "0") {
-        id = ""
-        attributes = Attributes(
-            addressHash: address,
-            balance: balance,
-            transactionsCount: "0"
-        )
+        init(address: String, balance: String = "0") {
+            id = ""
+            attributes = Attributes(
+                addressHash: address,
+                balance: balance,
+                transactionsCount: "0"
+            )
+        }
+
+        struct Attributes: Codable {
+            let addressHash: String
+            let balance: String
+            let transactionsCount: String
+        }
     }
 
-    struct Attributes: Codable {
-        let addressHash: String
-        let balance: String
-        let transactionsCount: String
+    struct Transaction: Codable {
+        let id: String
+        let attributes: Attributes
+
+        var hash: String { attributes.transactionHash }
+        var block: UInt64 { UInt64(attributes.blockNumber) ?? 0 }
+        var date: Date { Date(timeIntervalSince1970: (TimeInterval(attributes.blockTimestamp) ?? 0) / 1000) }
+
+        struct Attributes: Codable {
+            let transactionHash: String
+            let blockNumber: String
+            let blockTimestamp: String
+        }
     }
 }
 
-struct Transaction: Codable {
-    let id: String
-    let attributes: Attributes
-
-    var hash: String { attributes.transactionHash }
-    var block: UInt64 { UInt64(attributes.blockNumber) ?? 0 }
-    var date: Date { Date(timeIntervalSince1970: (TimeInterval(attributes.blockTimestamp) ?? 0) / 1000) }
-
-    struct Attributes: Codable {
-        let transactionHash: String
-        let blockNumber: String
-        let blockTimestamp: String
-    }
-}

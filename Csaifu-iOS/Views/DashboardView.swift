@@ -13,7 +13,7 @@ struct DashboardView: View {
     @EnvironmentObject private var balanceStore: BalanceStore
     @EnvironmentObject private var transactionStore: TransactionStore
 
-    var addresses: [Address] {
+    var addresses: [Api.Address] {
         balanceStore.derivedAddresses.compactMap { address in
             balanceStore.addresses[address]
         }
@@ -78,7 +78,7 @@ private extension DashboardView {
 }
 
 struct TransactionRow: View {
-    let transaction: Transaction
+    let transaction: Api.Transaction
     static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium

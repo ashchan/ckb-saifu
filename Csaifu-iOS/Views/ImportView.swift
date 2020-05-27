@@ -33,6 +33,8 @@ struct ImportView: View {
                 .foregroundColor(.secondary)
         }
         .padding(10)
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+        .edgesIgnoringSafeArea(.all)
         .sheet(isPresented: $pickerPresented, onDismiss: {
             self.pickerPresented = false
         }) {
@@ -89,6 +91,7 @@ struct ImportView_Previews: PreviewProvider {
                 .colorScheme(.light)
 
             ImportView()
+                .background(Color(UIColor.systemBackground))
                 .colorScheme(.dark)
         }
     }
