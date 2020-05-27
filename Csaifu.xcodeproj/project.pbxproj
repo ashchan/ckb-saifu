@@ -24,6 +24,10 @@
 		1AC32DC1247600B90083BD71 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AC32DBF247600B90083BD71 /* Main.storyboard */; };
 		1AC32DCD247600B90083BD71 /* CsaifuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC32DCC247600B90083BD71 /* CsaifuTests.swift */; };
 		1AC32DDA247601010083BD71 /* ImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC32DD9247601010083BD71 /* ImportView.swift */; };
+		1AC38F84247F5127006002E8 /* WalletStore+Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC38F83247F5127006002E8 /* WalletStore+Balance.swift */; };
+		1AC38F85247F5127006002E8 /* WalletStore+Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC38F83247F5127006002E8 /* WalletStore+Balance.swift */; };
+		1AC38F87247F541E006002E8 /* CoreDataSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC38F86247F541E006002E8 /* CoreDataSupport.swift */; };
+		1AC38F88247F541E006002E8 /* CoreDataSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC38F86247F541E006002E8 /* CoreDataSupport.swift */; };
 		1AE796DB247AB993001A581E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE796DA247AB993001A581E /* AppDelegate.swift */; };
 		1AE796DD247AB993001A581E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE796DC247AB993001A581E /* SceneDelegate.swift */; };
 		1AE796DF247AB993001A581E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE796DE247AB993001A581E /* ContentView.swift */; };
@@ -34,7 +38,6 @@
 		1AE796EE247ABB82001A581E /* ApiEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF97A15247A4BC5002C0836 /* ApiEntity.swift */; };
 		1AE796EF247ABB86001A581E /* UInt64+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF97A1A247A70B6002C0836 /* UInt64+Extension.swift */; };
 		1AE796F0247ABB8A001A581E /* WalletStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A31494824761F5200FEB877 /* WalletStore.swift */; };
-		1AE796F1247ABB8C001A581E /* BalanaceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF97A17247A5983002C0836 /* BalanaceStore.swift */; };
 		1AE796F2247ABB8F001A581E /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7853E12476399C0092777B /* Wallet.swift */; };
 		1AE796F5247ABBB8001A581E /* CKBFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 1AE796F4247ABBB8001A581E /* CKBFoundation */; };
 		1AE796F7247ABBB8001A581E /* CKBKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1AE796F6247ABBB8001A581E /* CKBKit */; };
@@ -45,7 +48,6 @@
 		1AF1C5B3247DDE9200D4949D /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1C5B0247DDE9200D4949D /* CoreData.xcdatamodeld */; };
 		1AF97A14247A49B2002C0836 /* ExplorerApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF97A13247A49B1002C0836 /* ExplorerApi.swift */; };
 		1AF97A16247A4BC5002C0836 /* ApiEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF97A15247A4BC5002C0836 /* ApiEntity.swift */; };
-		1AF97A18247A5983002C0836 /* BalanaceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF97A17247A5983002C0836 /* BalanaceStore.swift */; };
 		1AF97A1B247A70B6002C0836 /* UInt64+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF97A1A247A70B6002C0836 /* UInt64+Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +79,8 @@
 		1AC32DCC247600B90083BD71 /* CsaifuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CsaifuTests.swift; sourceTree = "<group>"; };
 		1AC32DCE247600B90083BD71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1AC32DD9247601010083BD71 /* ImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportView.swift; sourceTree = "<group>"; };
+		1AC38F83247F5127006002E8 /* WalletStore+Balance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WalletStore+Balance.swift"; sourceTree = "<group>"; };
+		1AC38F86247F541E006002E8 /* CoreDataSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSupport.swift; sourceTree = "<group>"; };
 		1AE796D8247AB993001A581E /* CKB Saifu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CKB Saifu.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AE796DA247AB993001A581E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AE796DC247AB993001A581E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,7 +95,6 @@
 		1AF1C5B1247DDE9200D4949D /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 		1AF97A13247A49B1002C0836 /* ExplorerApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplorerApi.swift; sourceTree = "<group>"; };
 		1AF97A15247A4BC5002C0836 /* ApiEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEntity.swift; sourceTree = "<group>"; };
-		1AF97A17247A5983002C0836 /* BalanaceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanaceStore.swift; sourceTree = "<group>"; };
 		1AF97A1A247A70B6002C0836 /* UInt64+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt64+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -195,7 +198,7 @@
 				1A7853E12476399C0092777B /* Wallet.swift */,
 				1A31494824761F5200FEB877 /* WalletStore.swift */,
 				1A4A1BC5247EA3A300305337 /* WalletStore+Address.swift */,
-				1AF97A17247A5983002C0836 /* BalanaceStore.swift */,
+				1AC38F83247F5127006002E8 /* WalletStore+Balance.swift */,
 				1AA9C1C4247CB63400EAD599 /* TransactionStore.swift */,
 			);
 			path = Store;
@@ -256,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				1AF1C5B0247DDE9200D4949D /* CoreData.xcdatamodeld */,
+				1AC38F86247F541E006002E8 /* CoreDataSupport.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -430,8 +434,9 @@
 				1A7853E22476399C0092777B /* Wallet.swift in Sources */,
 				1AC32DB9247600B80083BD71 /* ContentView.swift in Sources */,
 				1AC32DDA247601010083BD71 /* ImportView.swift in Sources */,
-				1AF97A18247A5983002C0836 /* BalanaceStore.swift in Sources */,
 				1A31494B24762B8B00FEB877 /* DashboardView.swift in Sources */,
+				1AC38F84247F5127006002E8 /* WalletStore+Balance.swift in Sources */,
+				1AC38F87247F541E006002E8 /* CoreDataSupport.swift in Sources */,
 				1AF1C5B2247DDE9200D4949D /* CoreData.xcdatamodeld in Sources */,
 				1AF97A1B247A70B6002C0836 /* UInt64+Extension.swift in Sources */,
 				1A31494924761F5200FEB877 /* WalletStore.swift in Sources */,
@@ -455,12 +460,13 @@
 				1AE796DB247AB993001A581E /* AppDelegate.swift in Sources */,
 				1AE796DD247AB993001A581E /* SceneDelegate.swift in Sources */,
 				1AF1C5B3247DDE9200D4949D /* CoreData.xcdatamodeld in Sources */,
-				1AE796F1247ABB8C001A581E /* BalanaceStore.swift in Sources */,
+				1AC38F88247F541E006002E8 /* CoreDataSupport.swift in Sources */,
 				1AE796DF247AB993001A581E /* ContentView.swift in Sources */,
 				1AE796F0247ABB8A001A581E /* WalletStore.swift in Sources */,
 				1A4A1BC7247ED57B00305337 /* WalletStore+Address.swift in Sources */,
 				1AE79700247AC076001A581E /* ImportView.swift in Sources */,
 				1AE79701247AC079001A581E /* DashboardView.swift in Sources */,
+				1AC38F85247F5127006002E8 /* WalletStore+Balance.swift in Sources */,
 				1AE796ED247ABB7E001A581E /* ExplorerApi.swift in Sources */,
 				1AE796F2247ABB8F001A581E /* Wallet.swift in Sources */,
 				1AE796EE247ABB82001A581E /* ApiEntity.swift in Sources */,

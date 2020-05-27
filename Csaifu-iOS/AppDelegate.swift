@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+typealias Application = UIApplication
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var persistentContainer: NSPersistentContainer = {

@@ -10,18 +10,6 @@ import CoreData
 import CKBFoundation
 import CKBKit
 
-#if os(macOS)
-
-import Cocoa
-typealias Application = NSApplication
-
-#else
-
-import UIKit
-typealias Application = UIApplication
-
-#endif
-
 /// Address derivation & management
 extension WalletStore {
     enum AddressChange: Int32 {
@@ -48,13 +36,11 @@ extension WalletStore {
         let request = NSBatchDeleteRequest(fetchRequest: Address.fetchRequest())
         request.resultType = .resultTypeObjectIDs
         do {
-            let _ = try managedObjectContext.execute(request) as! NSBatchDeleteResult
-            /*
-            let changes: [AnyHashable: Any] = [
-                NSDeletedObjectsKey: result.result as! [NSManagedObjectID]
-            ]
-            NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [managedObjectContext])
-            */
+            let result = try managedObjectContext.execute(request) as! NSBatchDeleteResult
+            if let objectIDs = result.result as? [NSManagedObjectID], !objectIDs.isEmpty {
+                let changes = [NSInsertedObjectsKey: objectIDs]
+                NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [managedObjectContext])
+            }
         } catch {
             print("Delete address DB error: " + error.localizedDescription)
         }
@@ -74,13 +60,6 @@ extension WalletStore.AddressChange {
 
 private extension WalletStore {
     var addressDerivationBatchSize: Int32 { 20 }
-    var managedObjectContext: NSManagedObjectContext {
-        (Application.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    }
-    var managedObjectModel: NSManagedObjectModel {
-        (Application.shared.delegate as! AppDelegate).persistentContainer.managedObjectModel
-    }
-
     func deriveAddress(type: AddressChange, index: Int32) -> String {
         let path = "\(type.rawValue)/\(index)"
         let publicKey = wallet!.xpubkey.keychain.derivedKeychain(with: path)!.publicKey
@@ -104,14 +83,25 @@ private extension WalletStore {
         if let last = lastAddress(type: type) {
             start = last.index + 1
         }
-        for index in start ..< start + addressDerivationBatchSize {
-            let address = Address(context: managedObjectContext)
-            address.address = deriveAddress(type: type, index: index)
-            address.change = type.rawValue
-            address.index = index
+        let addresses = (start ..< start + addressDerivationBatchSize).map { index -> [String: Any] in
+            [
+                "address": deriveAddress(type: type, index: index),
+                "change": type.rawValue,
+                "index": index,
+            ]
         }
 
-        try? managedObjectContext.save()
+        let request = NSBatchInsertRequest(entity: Address.entity(), objects: addresses)
+        request.resultType = .objectIDs
+        do {
+            let result = try managedObjectContext.execute(request) as! NSBatchInsertResult
+            if let objectIDs = result.result as? [NSManagedObjectID], !objectIDs.isEmpty {
+                let changes = [NSInsertedObjectsKey: objectIDs]
+                NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [managedObjectContext])
+            }
+        } catch {
+            print("Saving address DB error: " + error.localizedDescription)
+        }
     }
 
     func deriveMoreAddressesIfNecessary(type: AddressChange) {

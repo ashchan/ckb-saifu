@@ -11,6 +11,9 @@ import KeychainAccess
 
 final class WalletStore: ObservableObject {
     @Published var wallet: Wallet?
+    @Published var balance: UInt64 = 0
+    @Published var transactionsCount: Int = 0
+
     var hasWallet: Bool { wallet != nil }
 
     private static let keychainService = "com.ashchan.ckb-saifu"
@@ -28,6 +31,8 @@ final class WalletStore: ObservableObject {
         keychain[Self.keychainKey] = wallet.xpubkey.raw
     }
 }
+
+extension WalletStore: CoreDataSupport {}
 
 // MARK: - Create/Destory
 extension WalletStore {

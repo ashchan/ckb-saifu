@@ -63,8 +63,9 @@ final class TransactionStore: ObservableObject {
         }
 
         func fetch() {
+            guard let address = address.address else { return }
             let publisher = ExplorerApi
-                .fetchCollection(endpoint: .addressTransactions(address: address.address!), page: page, perPage: per)
+                .fetchCollection(endpoint: .addressTransactions(address: address), page: page, perPage: per)
                 .replaceError(with: [Api.Transaction]())
                 .eraseToAnyPublisher()
             cancellable = publisher

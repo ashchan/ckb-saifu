@@ -1,20 +1,14 @@
 //
-//  BalanaceStroe.swift
+//  WalletStore+Balance.swift
 //  Csaifu
 //
-//  Created by James Chen on 2020/05/24.
+//  Created by James Chen on 2020/05/28.
 //  Copyright © 2020 James Chen. All rights reserved.
 //
 
 import Foundation
-import CKBFoundation
-import CKBKit
 
-final class BalanceStore: ObservableObject {
-    var addresses = [Address]()
-    @Published var balance: UInt64 = 0
-    @Published var transactionsCount: Int = 0
-
+extension WalletStore {
     private func calcTotal() {
         balance = UInt64(addresses.map { $0.balance }.reduce(0, +))
         transactionsCount = Int(addresses.map { $0.txCount }.reduce(0, +))

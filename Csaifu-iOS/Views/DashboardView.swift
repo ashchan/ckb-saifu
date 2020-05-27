@@ -10,10 +10,9 @@ import SwiftUI
 
 struct DashboardView: View {
     @EnvironmentObject private var walletStore: WalletStore
-    @EnvironmentObject private var balanceStore: BalanceStore
     @EnvironmentObject private var transactionStore: TransactionStore
 
-    var balance: UInt64 { balanceStore.balance }
+    var balance: UInt64 { walletStore.balance }
 
     var body: some View {
         NavigationView {
@@ -27,11 +26,11 @@ struct DashboardView: View {
                     Spacer()
                     Text("Txs:")
                         .font(Font.system(.subheadline))
-                    Text("\(balanceStore.transactionsCount)")
+                    Text("\(walletStore.transactionsCount)")
                         .font(Font.system(.subheadline))
                 }
 
-                if balanceStore.transactionsCount > 0 && transactionStore.transactions.isEmpty {
+                if walletStore.transactionsCount > 0 && transactionStore.transactions.isEmpty {
                     HStack(alignment: .center, spacing: 10) {
                         Spacer()
                         Button(action: {
@@ -59,15 +58,13 @@ struct DashboardView: View {
             }.navigationBarTitle("Transactions")
         }
         .onAppear {
-            self.balanceStore.addresses = self.walletStore.addresses
-            self.balanceStore.loadBalance()
+            self.walletStore.loadBalance()
         }
     }
 }
 
 private extension DashboardView {
     func loadTransactions() {
-        transactionStore.addresses = Array(balanceStore.addresses)
         transactionStore.load()
     }
 }
@@ -102,7 +99,6 @@ struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
         DashboardView()
             .environmentObject(WalletStore.example)
-            .environmentObject(BalanceStore())
             .environmentObject(TransactionStore())
     }
 }

@@ -9,6 +9,8 @@
 import Cocoa
 import SwiftUI
 
+typealias Application = NSApplication
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     var window: NSWindow!
