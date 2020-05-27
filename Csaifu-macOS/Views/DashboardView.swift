@@ -45,6 +45,7 @@ struct DashboardView: View {
             }
         }
         .onAppear {
+            self.balanceStore.addresses = self.walletStore.addresses
             self.balanceStore.loadBalance()
         }
     }
@@ -52,7 +53,7 @@ struct DashboardView: View {
 
 private extension DashboardView {
     func loadTransactions() {
-        transactionStore.addresses = Array(balanceStore.addresses.values)
+        transactionStore.addresses = Array(balanceStore.addresses)
         transactionStore.load()
     }
 }
@@ -85,7 +86,7 @@ struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
         DashboardView()
             .environmentObject(WalletStore.example)
-            .environmentObject(BalanceStore(wallet: WalletStore.example.wallet!))
+            .environmentObject(BalanceStore())
             .environmentObject(TransactionStore())
             .frame(minWidth: 800, minHeight: 400)
     }

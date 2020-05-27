@@ -13,12 +13,6 @@ struct DashboardView: View {
     @EnvironmentObject private var balanceStore: BalanceStore
     @EnvironmentObject private var transactionStore: TransactionStore
 
-    var addresses: [Api.Address] {
-        balanceStore.derivedAddresses.compactMap { address in
-            balanceStore.addresses[address]
-        }
-    }
-
     var balance: UInt64 { balanceStore.balance }
 
     var body: some View {
@@ -65,6 +59,7 @@ struct DashboardView: View {
             }.navigationBarTitle("Transactions")
         }
         .onAppear {
+            self.balanceStore.addresses = self.walletStore.addresses
             self.balanceStore.loadBalance()
         }
     }
@@ -72,7 +67,7 @@ struct DashboardView: View {
 
 private extension DashboardView {
     func loadTransactions() {
-        transactionStore.addresses = Array(balanceStore.addresses.values)
+        transactionStore.addresses = Array(balanceStore.addresses)
         transactionStore.load()
     }
 }
@@ -107,7 +102,7 @@ struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
         DashboardView()
             .environmentObject(WalletStore.example)
-            .environmentObject(BalanceStore(wallet: WalletStore.example.wallet!))
+            .environmentObject(BalanceStore())
             .environmentObject(TransactionStore())
     }
 }

@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let error = error {
             }
         }
+        container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         return container
     }()
 

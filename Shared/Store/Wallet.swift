@@ -21,6 +21,10 @@ struct ExtendedPublicKey: Decodable {
         Data(hex: String(raw.suffix(64)))
     }
 
+    var keychain: Keychain {
+        Keychain(publicKey: publicKey, chainCode: chainCode)
+    }
+
     enum CodingKeys: String, CodingKey {
         case raw = "xpubkey"
     }
@@ -29,10 +33,7 @@ struct ExtendedPublicKey: Decodable {
 struct Wallet {
     let xpubkey: ExtendedPublicKey
     var address: String {
-        let publicKey = Keychain(
-            publicKey: xpubkey.publicKey,
-            chainCode: xpubkey.chainCode
-        ).derivedKeychain(with: "0/0")!.publicKey
+        let publicKey = xpubkey.keychain.derivedKeychain(with: "0/0")!.publicKey
         return AddressGenerator.address(for: publicKey, network: .mainnet)
     }
 

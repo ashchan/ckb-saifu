@@ -29,7 +29,7 @@ final class WalletStore: ObservableObject {
     }
 }
 
-// MARK: - API
+// MARK: - Create/Destory
 extension WalletStore {
     func `import`(path: URL) {
         // TODO: error handling
@@ -41,12 +41,17 @@ extension WalletStore {
         }
         self.wallet = wallet
         persist(wallet: wallet)
+
+        deriveInitialAddresses()
+        deriveAddressesIfNessary()
     }
 
     func delete() {
         wallet = nil
         let keychain = Keychain(service: Self.keychainService)
         keychain[Self.keychainKey] = nil
+
+        deleteAllAddresses()
     }
 }
 

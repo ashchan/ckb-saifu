@@ -20,6 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             if let error = error {
             }
         }
+        container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         return container
     }()
 
@@ -29,7 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             do {
                 try context.save()
             } catch {
-                // Show the error here
+                print("Save core data error: " + error.localizedDescription)
             }
         }
     }

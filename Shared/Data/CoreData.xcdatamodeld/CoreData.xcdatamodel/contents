@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+    <entity name="Address" representedClassName="Address" syncable="YES" codeGenerationType="class">
+        <attribute name="address" attributeType="String" minValueString="46"/>
+        <attribute name="balance" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="change" attributeType="Integer 32" minValueString="0" maxValueString="1" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="index" attributeType="Integer 32" minValueString="0" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="txCount" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="address"/>
+            </uniquenessConstraint>
+            <uniquenessConstraint>
+                <constraint value="change"/>
+                <constraint value="index"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <fetchRequest name="FetchAllAddresses" entity="Address" includesPendingChanges="YES"/>
+    <fetchRequest name="FetchChangeAddresses" entity="Address" predicateString="change == 1" includesPendingChanges="YES"/>
+    <fetchRequest name="FetchReceivingAddresses" entity="Address" predicateString="change == 0" includesPendingChanges="YES"/>
+    <elements>
+        <element name="Address" positionX="-859.01171875" positionY="-408.39453125" width="128" height="118"/>
+    </elements>
 </model>

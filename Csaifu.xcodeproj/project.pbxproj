@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1A31494924761F5200FEB877 /* WalletStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A31494824761F5200FEB877 /* WalletStore.swift */; };
 		1A31494B24762B8B00FEB877 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A31494A24762B8B00FEB877 /* DashboardView.swift */; };
+		1A4A1BC6247EA3A300305337 /* WalletStore+Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4A1BC5247EA3A300305337 /* WalletStore+Address.swift */; };
+		1A4A1BC7247ED57B00305337 /* WalletStore+Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4A1BC5247EA3A300305337 /* WalletStore+Address.swift */; };
 		1A7853E22476399C0092777B /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7853E12476399C0092777B /* Wallet.swift */; };
 		1A7853E524763FCF0092777B /* CKBKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1A7853E424763FCF0092777B /* CKBKit */; };
 		1A7853E724763FCF0092777B /* CKBFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 1A7853E624763FCF0092777B /* CKBFoundation */; };
@@ -32,7 +34,7 @@
 		1AE796EE247ABB82001A581E /* ApiEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF97A15247A4BC5002C0836 /* ApiEntity.swift */; };
 		1AE796EF247ABB86001A581E /* UInt64+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF97A1A247A70B6002C0836 /* UInt64+Extension.swift */; };
 		1AE796F0247ABB8A001A581E /* WalletStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A31494824761F5200FEB877 /* WalletStore.swift */; };
-		1AE796F1247ABB8C001A581E /* BalanaceStroe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF97A17247A5983002C0836 /* BalanaceStroe.swift */; };
+		1AE796F1247ABB8C001A581E /* BalanaceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF97A17247A5983002C0836 /* BalanaceStore.swift */; };
 		1AE796F2247ABB8F001A581E /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7853E12476399C0092777B /* Wallet.swift */; };
 		1AE796F5247ABBB8001A581E /* CKBFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 1AE796F4247ABBB8001A581E /* CKBFoundation */; };
 		1AE796F7247ABBB8001A581E /* CKBKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1AE796F6247ABBB8001A581E /* CKBKit */; };
@@ -43,7 +45,7 @@
 		1AF1C5B3247DDE9200D4949D /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1C5B0247DDE9200D4949D /* CoreData.xcdatamodeld */; };
 		1AF97A14247A49B2002C0836 /* ExplorerApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF97A13247A49B1002C0836 /* ExplorerApi.swift */; };
 		1AF97A16247A4BC5002C0836 /* ApiEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF97A15247A4BC5002C0836 /* ApiEntity.swift */; };
-		1AF97A18247A5983002C0836 /* BalanaceStroe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF97A17247A5983002C0836 /* BalanaceStroe.swift */; };
+		1AF97A18247A5983002C0836 /* BalanaceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF97A17247A5983002C0836 /* BalanaceStore.swift */; };
 		1AF97A1B247A70B6002C0836 /* UInt64+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF97A1A247A70B6002C0836 /* UInt64+Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +62,7 @@
 /* Begin PBXFileReference section */
 		1A31494824761F5200FEB877 /* WalletStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletStore.swift; sourceTree = "<group>"; };
 		1A31494A24762B8B00FEB877 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		1A4A1BC5247EA3A300305337 /* WalletStore+Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WalletStore+Address.swift"; sourceTree = "<group>"; };
 		1A7853E12476399C0092777B /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		1AA9C1C4247CB63400EAD599 /* TransactionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStore.swift; sourceTree = "<group>"; };
 		1AC32DB3247600B80083BD71 /* CKB Saifu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CKB Saifu.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,7 +91,7 @@
 		1AF1C5B1247DDE9200D4949D /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 		1AF97A13247A49B1002C0836 /* ExplorerApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplorerApi.swift; sourceTree = "<group>"; };
 		1AF97A15247A4BC5002C0836 /* ApiEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEntity.swift; sourceTree = "<group>"; };
-		1AF97A17247A5983002C0836 /* BalanaceStroe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanaceStroe.swift; sourceTree = "<group>"; };
+		1AF97A17247A5983002C0836 /* BalanaceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanaceStore.swift; sourceTree = "<group>"; };
 		1AF97A1A247A70B6002C0836 /* UInt64+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt64+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -191,7 +194,8 @@
 			children = (
 				1A7853E12476399C0092777B /* Wallet.swift */,
 				1A31494824761F5200FEB877 /* WalletStore.swift */,
-				1AF97A17247A5983002C0836 /* BalanaceStroe.swift */,
+				1A4A1BC5247EA3A300305337 /* WalletStore+Address.swift */,
+				1AF97A17247A5983002C0836 /* BalanaceStore.swift */,
 				1AA9C1C4247CB63400EAD599 /* TransactionStore.swift */,
 			);
 			path = Store;
@@ -420,12 +424,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AA9C1C5247CB63400EAD599 /* TransactionStore.swift in Sources */,
+				1A4A1BC6247EA3A300305337 /* WalletStore+Address.swift in Sources */,
 				1AF97A14247A49B2002C0836 /* ExplorerApi.swift in Sources */,
 				1AF97A16247A4BC5002C0836 /* ApiEntity.swift in Sources */,
 				1A7853E22476399C0092777B /* Wallet.swift in Sources */,
 				1AC32DB9247600B80083BD71 /* ContentView.swift in Sources */,
 				1AC32DDA247601010083BD71 /* ImportView.swift in Sources */,
-				1AF97A18247A5983002C0836 /* BalanaceStroe.swift in Sources */,
+				1AF97A18247A5983002C0836 /* BalanaceStore.swift in Sources */,
 				1A31494B24762B8B00FEB877 /* DashboardView.swift in Sources */,
 				1AF1C5B2247DDE9200D4949D /* CoreData.xcdatamodeld in Sources */,
 				1AF97A1B247A70B6002C0836 /* UInt64+Extension.swift in Sources */,
@@ -450,9 +455,10 @@
 				1AE796DB247AB993001A581E /* AppDelegate.swift in Sources */,
 				1AE796DD247AB993001A581E /* SceneDelegate.swift in Sources */,
 				1AF1C5B3247DDE9200D4949D /* CoreData.xcdatamodeld in Sources */,
-				1AE796F1247ABB8C001A581E /* BalanaceStroe.swift in Sources */,
+				1AE796F1247ABB8C001A581E /* BalanaceStore.swift in Sources */,
 				1AE796DF247AB993001A581E /* ContentView.swift in Sources */,
 				1AE796F0247ABB8A001A581E /* WalletStore.swift in Sources */,
+				1A4A1BC7247ED57B00305337 /* WalletStore+Address.swift in Sources */,
 				1AE79700247AC076001A581E /* ImportView.swift in Sources */,
 				1AE79701247AC079001A581E /* DashboardView.swift in Sources */,
 				1AE796ED247ABB7E001A581E /* ExplorerApi.swift in Sources */,
