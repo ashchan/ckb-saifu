@@ -15,7 +15,6 @@ typealias Application = NSApplication
 class AppDelegate: NSObject, NSApplicationDelegate {
     var window: NSWindow!
 
-    private var walletStore = WalletStore()
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "CoreData")
         container.loadPersistentStores { description, error in
@@ -25,6 +24,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         return container
     }()
+
+    private var walletStore: WalletStore!
 
     func saveContext () {
         let context = persistentContainer.viewContext
@@ -49,9 +50,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         let contentView = ContentView()
             .environment(\.managedObjectContext, persistentContainer.viewContext)
-            .environmentObject(walletStore)
+        walletStore = WalletStore()
 
-        window.contentView = NSHostingView(rootView: contentView)
+        window.contentView = NSHostingView(rootView: contentView.environmentObject(walletStore))
         window.makeKeyAndOrderFront(nil)
     }
 

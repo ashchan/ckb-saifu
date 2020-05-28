@@ -12,11 +12,12 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
-    private var walletStore = WalletStore()
+    private var walletStore: WalletStore!
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Create the SwiftUI view that provides the window contents.
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        walletStore = WalletStore()
         let contentView = ContentView()
             .environment(\.managedObjectContext, context)
             .environmentObject(walletStore)

@@ -22,3 +22,13 @@ extension CoreDataSupport {
         (Application.shared.delegate as! AppDelegate).persistentContainer.managedObjectModel
     }
 }
+
+extension NSExpressionDescription {
+    static func description(for name: String, expression: NSExpression, resultType: NSAttributeType) -> NSExpressionDescription {
+        let description = NSExpressionDescription()
+        description.name = name
+        description.expression = expression
+        description.expressionResultType = resultType
+        return description
+    }
+}

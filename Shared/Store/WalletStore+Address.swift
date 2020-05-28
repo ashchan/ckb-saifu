@@ -116,6 +116,7 @@ private extension WalletStore {
             }, receiveValue: { [weak self] (result: Api.Address) in
                 last.balance = Int64(result.balance) // No one would own half of the coins, right?
                 last.txCount = Int32(result.transactionsCount)
+                try? self?.managedObjectContext.save()
 
                 if result.transactionsCount > 0 {
                     self?.deriveAddresses(type: type)

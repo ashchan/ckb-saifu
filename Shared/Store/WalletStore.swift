@@ -23,6 +23,7 @@ final class WalletStore: ObservableObject {
         let keychain = Keychain(service: Self.keychainService)
         if let saved = keychain[Self.keychainKey] {
             wallet = Wallet(xpubkey: ExtendedPublicKey(raw: saved))
+            calculateTotal()
         }
     }
 
