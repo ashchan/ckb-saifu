@@ -18,7 +18,7 @@ extension WalletStore {
     }
 
     var addresses: [Address] {
-        let request = managedObjectModel.fetchRequestFromTemplate(withName: "FetchAllAddresses", substitutionVariables: [:]) as! NSFetchRequest<Address>
+        let request: NSFetchRequest = Address.fetchRequest()
         return try! managedObjectContext.fetch(request)
     }
 
@@ -68,12 +68,13 @@ private extension WalletStore {
 
     func lastAddress(type: AddressChange) -> Address? {
         let request = managedObjectModel.fetchRequestFromTemplate(withName: type.fetchRequestName, substitutionVariables: [:]) as! NSFetchRequest<Address>
-        request.sortDescriptors = [NSSortDescriptor(keyPath: \Address.index, ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \Address.index, ascending: false)]
+        request.fetchLimit = 1
         do {
             let addresses = try managedObjectContext.fetch(request)
-            return addresses.last
+            return addresses.first
         } catch {
-            print("Loading addresses error: " + error.localizedDescription)
+            print("Loading last addresses error: " + error.localizedDescription)
             return nil
         }
     }
