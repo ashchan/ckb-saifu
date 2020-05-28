@@ -38,9 +38,15 @@ extension WalletStore: CoreDataSupport {}
 extension WalletStore {
     func `import`(path: URL) {
         // TODO: error handling
+        #if os(macOS)
         guard let content = try? Data(contentsOf: path) else {
             return // Cannot read file
         }
+        #else
+        guard let content = iOSreadFile(url: path) else {
+            return // Cannot read file
+        }
+        #endif
         guard let wallet = Wallet(json: content) else {
             return // File format doesn't match
         }
@@ -57,6 +63,21 @@ extension WalletStore {
         keychain[Self.keychainKey] = nil
 
         deleteAllAddresses()
+    }
+
+    private func iOSreadFile(url: URL) -> Data? {
+        guard url.startAccessingSecurityScopedResource() else {
+            return nil
+        }
+        defer { url.stopAccessingSecurityScopedResource() }
+
+        var error: NSError? = nil
+        var result: Data?
+        NSFileCoordinator().coordinate(readingItemAt: url, error: &error) { (url) in
+            result = try? Data(contentsOf: url)
+        }
+
+        return result
     }
 }
 
