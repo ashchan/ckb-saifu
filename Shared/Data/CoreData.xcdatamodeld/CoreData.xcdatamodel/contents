@@ -16,9 +16,23 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="Tx" representedClassName="Tx" syncable="YES" codeGenerationType="class">
+        <attribute name="block" attributeType="Integer 64" minValueString="0" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="calulatedAmount" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="estimatedAmount" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="fee" attributeType="Integer 64" minValueString="0" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="txHash" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="txHash"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
     <fetchRequest name="FetchChangeAddresses" entity="Address" predicateString="change == 1" includesPendingChanges="YES"/>
     <fetchRequest name="FetchReceivingAddresses" entity="Address" predicateString="change == 0" includesPendingChanges="YES"/>
     <elements>
         <element name="Address" positionX="-859.01171875" positionY="-408.39453125" width="128" height="118"/>
+        <element name="Tx" positionX="-855" positionY="-369" width="128" height="133"/>
     </elements>
 </model>

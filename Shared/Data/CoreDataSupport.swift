@@ -12,6 +12,8 @@ import CoreData
 protocol CoreDataSupport {
     var managedObjectContext: NSManagedObjectContext { get }
     var managedObjectModel: NSManagedObjectModel { get }
+
+    func deleteTable(entity: NSManagedObject.Type)
 }
 
 extension CoreDataSupport {
@@ -20,6 +22,20 @@ extension CoreDataSupport {
     }
     var managedObjectModel: NSManagedObjectModel {
         (Application.shared.delegate as! AppDelegate).persistentContainer.managedObjectModel
+    }
+
+    func deleteTable(entity: NSManagedObject.Type) {
+        let request = NSBatchDeleteRequest(fetchRequest: entity.fetchRequest())
+        request.resultType = .resultTypeObjectIDs
+        do {
+            let result = try managedObjectContext.execute(request) as! NSBatchDeleteResult
+            if let objectIDs = result.result as? [NSManagedObjectID], !objectIDs.isEmpty {
+                let changes = [NSInsertedObjectsKey: objectIDs]
+                NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [managedObjectContext])
+            }
+        } catch {
+            print("Delete \(entity.description()) DB error: " + error.localizedDescription)
+        }
     }
 }
 

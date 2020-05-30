@@ -31,20 +31,6 @@ extension WalletStore {
         deriveMoreAddressesIfNecessary(type: .receiving)
         deriveMoreAddressesIfNecessary(type: .change)
     }
-
-    func deleteAllAddresses() {
-        let request = NSBatchDeleteRequest(fetchRequest: Address.fetchRequest())
-        request.resultType = .resultTypeObjectIDs
-        do {
-            let result = try managedObjectContext.execute(request) as! NSBatchDeleteResult
-            if let objectIDs = result.result as? [NSManagedObjectID], !objectIDs.isEmpty {
-                let changes = [NSInsertedObjectsKey: objectIDs]
-                NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [managedObjectContext])
-            }
-        } catch {
-            print("Delete address DB error: " + error.localizedDescription)
-        }
-    }
 }
 
 extension WalletStore.AddressChange {

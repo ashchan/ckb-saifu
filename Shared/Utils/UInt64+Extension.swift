@@ -25,3 +25,10 @@ extension UInt64 {
         return "\(integer).\(fraction)"
     }
 }
+
+extension Int64 {
+    var ckbAmount: String {
+        let sign = self < 0 ? "-" : ""
+        return sign + UInt64(abs(self)).ckbAmount
+    }
+}

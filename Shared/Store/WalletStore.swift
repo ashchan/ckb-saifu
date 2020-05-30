@@ -7,14 +7,16 @@
 //
 
 import Foundation
+import Combine
 import KeychainAccess
 
 final class WalletStore: ObservableObject {
     @Published var wallet: Wallet?
     @Published var balance: UInt64 = 0
-    @Published var transactionsCount: Int = 0
+    @Published var transactionsCount: Int = 0 // This is not the unique count as more than one addresses can be used in a single tx
 
     var hasWallet: Bool { wallet != nil }
+    var txLoadCancellables = Set<AnyCancellable>()
 
     private static let keychainService = "com.ashchan.ckb-saifu"
     private static let keychainKey = "wallet"
@@ -63,7 +65,8 @@ extension WalletStore {
         let keychain = Keychain(service: Self.keychainService)
         keychain[Self.keychainKey] = nil
 
-        deleteAllAddresses()
+        deleteTable(entity: Address.self)
+        deleteTable(entity: Tx.self)
     }
 
     private func iOSreadFile(url: URL) -> Data? {

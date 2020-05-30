@@ -15,8 +15,6 @@ struct ContentView: View {
     var body: some View {
         if store.hasWallet {
             DashboardView()
-                .environmentObject(TransactionStore())
-                .frame(minWidth: 800, maxWidth: .infinity, minHeight: 600, maxHeight: .infinity)
         } else {
             ImportView()
                 .frame(minWidth: 800, maxWidth: .infinity, minHeight: 600, maxHeight: .infinity)

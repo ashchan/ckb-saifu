@@ -10,9 +10,14 @@ import SwiftUI
 
 struct DashboardView: View {
     @EnvironmentObject private var walletStore: WalletStore
-    @EnvironmentObject private var transactionStore: TransactionStore
 
     var balance: UInt64 { walletStore.balance }
+    @FetchRequest(
+        entity: Tx.entity(),
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \Tx.date, ascending: false)
+        ]
+    ) var transactions: FetchedResults<Tx>
 
     var body: some View {
         NavigationView {
@@ -24,13 +29,9 @@ struct DashboardView: View {
                         .font(Font.system(.subheadline, design: .monospaced))
                         .fontWeight(.bold)
                     Spacer()
-                    Text("Txs:")
-                        .font(Font.system(.subheadline))
-                    Text("\(walletStore.transactionsCount)")
-                        .font(Font.system(.subheadline))
                 }
 
-                if walletStore.transactionsCount > 0 && transactionStore.transactions.isEmpty {
+                if walletStore.transactionsCount > 0 && transactions.isEmpty {
                     HStack(alignment: .center, spacing: 10) {
                         Spacer()
                         Button(action: {
@@ -52,7 +53,7 @@ struct DashboardView: View {
                     }
                 }
 
-                ForEach(transactionStore.transactions.sorted(by: { $1.block < $0.block }), id: \.hash) { tx in
+                ForEach(transactions, id: \.hash) { tx in
                     TransactionRow(transaction: tx)
                 }
             }.navigationBarTitle("Transactions")
@@ -65,12 +66,12 @@ struct DashboardView: View {
 
 private extension DashboardView {
     func loadTransactions() {
-        transactionStore.load()
+        walletStore.loadTransactions()
     }
 }
 
 struct TransactionRow: View {
-    let transaction: Api.Transaction
+    let transaction: Tx
     static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
@@ -80,7 +81,7 @@ struct TransactionRow: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text(transaction.hash)
+                Text(transaction.txHash!)
                     .truncationMode(.middle)
                     .lineLimit(1)
                     .font(Font.system(.footnote, design: .monospaced))
@@ -88,7 +89,7 @@ struct TransactionRow: View {
             }
 
             HStack(spacing: 10) {
-                Text(Self.dateFormatter.string(from: transaction.date))
+                Text(Self.dateFormatter.string(from: transaction.date!))
                 Text("#\(transaction.block)")
             }
         }
@@ -99,6 +100,5 @@ struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
         DashboardView()
             .environmentObject(WalletStore.example)
-            .environmentObject(TransactionStore())
     }
 }

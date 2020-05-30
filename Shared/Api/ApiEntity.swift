@@ -70,11 +70,15 @@ struct Api {
         var hash: String { attributes.transactionHash }
         var block: UInt64 { UInt64(attributes.blockNumber) ?? 0 }
         var date: Date { Date(timeIntervalSince1970: (TimeInterval(attributes.blockTimestamp) ?? 0) / 1000) }
+        var fee: UInt64 { UInt64(attributes.transactionFee) ?? 0 }
+        var income: Int64 { Int64(attributes.income.dropLast(2)) ?? 0 } // Last two digits are `.0`
 
         struct Attributes: Codable {
             let transactionHash: String
             let blockNumber: String
             let blockTimestamp: String
+            let transactionFee: String
+            let income: String
         }
     }
 }

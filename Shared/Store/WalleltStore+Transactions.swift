@@ -1,34 +1,52 @@
 //
-//  TransactionStore.swift
+//  WalleltStore+Transactions.swift
 //  Csaifu
 //
-//  Created by James Chen on 2020/05/26.
+//  Created by James Chen on 2020/05/30.
 //  Copyright © 2020 James Chen. All rights reserved.
 //
 
 import Foundation
+import CoreData
 import Combine
 
-final class TransactionStore: ObservableObject {
-    var addresses = [Address]()
-    private var cancellables = [AnyCancellable]()
-
-    @Published var transactions = [Api.Transaction]()
-
-    func load() {
+extension WalletStore {
+    func loadTransactions() {
         for address in addresses.filter({ $0.txCount > 0 }) {
-            load(for: address)
+            loadTransactions(for: address)
         }
     }
 
-    private func load(for address: Address) {
+    private func loadTransactions(for address: Address) {
         let loader = TransactionLoader(address: address)
-        let cancellable = loader.notifier.sink { [weak self] in
-            self?.transactions.append(contentsOf: $0)
-        }
-        cancellables.append(cancellable)
+        loader.notifier.sink { [weak self] in
+            self?.persist(transactions: $0)
+        }.store(in: &txLoadCancellables)
 
         loader.load()
+    }
+
+    private func persist(transactions: [Api.Transaction]) {
+        let txs = transactions.map { tx -> [String: Any]  in
+            [
+                "txHash": tx.hash,
+                "block": tx.block,
+                "date": tx.date,
+                "fee": tx.fee,
+                "estimatedAmount": tx.income,
+            ]
+        }
+        let request = NSBatchInsertRequest(entity: Tx.entity(), objects: txs)
+        request.resultType = .objectIDs
+        do {
+            let result = try managedObjectContext.execute(request) as! NSBatchInsertResult
+            if let objectIDs = result.result as? [NSManagedObjectID], !objectIDs.isEmpty {
+                let changes = [NSInsertedObjectsKey: objectIDs]
+                NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [managedObjectContext])
+            }
+        } catch {
+            print("Saving transaction DB error: " + error.localizedDescription)
+        }
     }
 
     class TransactionLoader {
@@ -83,3 +101,4 @@ final class TransactionStore: ObservableObject {
         }
     }
 }
+

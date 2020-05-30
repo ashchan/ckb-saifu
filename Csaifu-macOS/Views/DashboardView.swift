@@ -10,7 +10,12 @@ import SwiftUI
 
 struct DashboardView: View {
     @EnvironmentObject private var walletStore: WalletStore
-    @EnvironmentObject private var transactionStore: TransactionStore
+    @FetchRequest(
+        entity: Tx.entity(),
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \Tx.date, ascending: false)
+        ]
+    ) var transactions: FetchedResults<Tx>
 
     var balance: UInt64 { walletStore.balance }
 
@@ -25,11 +30,6 @@ struct DashboardView: View {
             }
 
             HStack(alignment: .bottom, spacing: 10) {
-                Text("Txs:")
-                    .font(Font.system(.subheadline))
-                Text("\(walletStore.transactionsCount)")
-                    .font(Font.system(.subheadline))
-
                 if walletStore.transactionsCount > 0 {
                     Button(action: {
                         self.loadTransactions()
@@ -39,7 +39,7 @@ struct DashboardView: View {
                 }
             }
 
-            ForEach(transactionStore.transactions.sorted(by: { $1.block < $0.block }), id: \.hash) { tx in
+            ForEach(transactions, id: \.hash) { tx in
                 TransactionRow(transaction: tx)
             }
         }
@@ -51,30 +51,30 @@ struct DashboardView: View {
 
 private extension DashboardView {
     func loadTransactions() {
-        transactionStore.addresses = walletStore.addresses
-        transactionStore.load()
+        walletStore.loadTransactions()
     }
 }
 
 struct TransactionRow: View {
-    let transaction: Api.Transaction
+    let transaction: Tx
     static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateStyle = .short
+        formatter.dateStyle = .medium
         return formatter
     }()
 
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text(transaction.hash)
+                Text(transaction.txHash!)
                     .font(Font.system(.body, design: .monospaced))
 
             }
 
             HStack(spacing: 10) {
-                Text(Self.dateFormatter.string(from: transaction.date))
+                Text(Self.dateFormatter.string(from: transaction.date!))
                 Text("#\(transaction.block)")
+                Text(transaction.estimatedAmount.ckbAmount)
             }
         }
     }
@@ -84,7 +84,5 @@ struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
         DashboardView()
             .environmentObject(WalletStore.example)
-            .environmentObject(TransactionStore())
-            .frame(minWidth: 800, minHeight: 400)
     }
 }
