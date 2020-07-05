@@ -1,5 +1,7 @@
 # CKB Saifu
 
+**Abandoned due to my lack of interest and time.**
+
 CKB wallet for minimalist.
 
 - [x] Import xpub, derive addresses
